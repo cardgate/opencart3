@@ -321,6 +321,11 @@ $src = '../catalog/controller/extension/payment/cardgate-clientlib-php/src';
 $dst = 'cardgate/catalog/controller/extension/payment/cardgate-clientlib-php/src';
 $is_dir = true;
 array_push( $data, data_element( $src, $dst, $is_dir ) );
+$src = '../catalog/controller/extension/payment/cardgate-clientlib-php/init.php';
+$dst = 'cardgate/catalog/controller/extension/payment/cardgate-clientlib-php/init.php';
+$is_dir = false;
+array_push( $data, data_element( $src, $dst, $is_dir ) );
+
 
 $src = '../catalog/controller/extension/payment/cardgate.php';
 $dst = 'cardgate/catalog/controller/extension/payment/cardgate.php';
