@@ -17,7 +17,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class ControllerExtensionPaymentCardGate extends Controller {
-	var $version = '3.0.1';
+	var $version = '3.0.2';
 	
 	/**
 	 * Index action
@@ -49,10 +49,7 @@ class ControllerExtensionPaymentCardGate extends Controller {
 			
 			$order_info = $this->model_checkout_order->getOrder ( $this->session->data ['order_id'] );
 			
-			//mail('richard@cardgate.com','data',serialize($order_info));die;
-			$address_info = $this->model_account_address->getAddress ( $this->customer->getAddressId () );
-			
-			$amount = ( int ) round ( $order_info ['total'] * $order_info ['currency_value'] * 100, 0 );
+			$amount = ( int ) round ( $this->currency->format ( $order_info ['total'], $order_info ['currency_code'], false, false ) * 100, 0 );
 			$currency = strtoupper ( $order_info ['currency_code'] );
 			$option = substr ( $payment, 8 );
 			
