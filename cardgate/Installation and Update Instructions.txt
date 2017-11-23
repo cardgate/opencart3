@@ -1,0 +1,6 @@
+Installation and Update Instructions
+==========================================
+
+Please follow the instructions here:
+
+https://www.cardgate.com/en/plug_in/opencart/?link=OpenCart3x-1-manual
