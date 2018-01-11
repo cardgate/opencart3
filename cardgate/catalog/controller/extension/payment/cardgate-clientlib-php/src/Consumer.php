@@ -28,44 +28,67 @@
 namespace cardgate\api {
 
 	/**
-	 * Cart instance.
+	 * Consumer instance.
+	 *
+	 * @method Consumer setEmail( string $sEmail_ )
+	 * @method string getEmail()
+	 * @method boolean hasEmail()
+	 * @method Consumer unsetEmail()
+	 *
+	 * @method Consumer setPhone( string $sPhone_ )
+	 * @method string getPhone()
+	 * @method boolean hasPhone()
+	 * @method Consumer unsetPhone()
 	 */
-	final class Cart {
+	final class Consumer extends Entity {
 
 		/**
-		 * The items in this cart.
-		 * @var Client
+		 * @ignore
+		 * @internal The methods these fields expose are configured in the class phpdoc.
+		 */
+		static $_aFields = [
+			'Email'			=> 'email',
+			'Phone'			=> 'phone'
+		];
+
+		/**
+		 * The bill-to address.
+		 * @var Address
 		 * @access private
 		 */
-		private $_aItems = [];
+		private $_oAddress = NULL;
 
 		/**
-		 * Add a cart item to the cart.
-		 * @param integer $iType_ The cart item type.
-		 * @param string $sSKU_ The SKU of the cart item.
-		 * @param string $sName_ The name of the cart item (productname).
-		 * @param string $iPrice_ The price of the cart item.
-		 * @param string $sLink_ An optional link to the product.
-		 * @return Item Returns the item that was added.
-		 * @throws Exception
+		 * The ship-to address.
+		 * @var Address
+		 * @access private
+		 */
+		private $_oShippingAddress = NULL;
+
+		/**
+		 * Accessor for the bill-to address.
+		 * @return Address
 		 * @access public
 		 * @api
 		 */
-		function addItem( $iType_, $sSKU_, $sName_, $iQuantity_, $iPrice_, $sLink_ = NULL ) {
-			$oItem = new Item( $iType_, $sSKU_, $sName_, $iQuantity_, $iPrice_, $sLink_ );
-			$this->_aItems[] = $oItem;
-			return $oItem;
-		}
-
-		function getAll() {
-		}
-
-		function getData() {
-			$aData = [];
-			foreach( $this->_aItems as $oItem ) {
-				$aData[] = $oItem->getData();
+		public function address() {
+			if ( NULL == $this->_oAddress ) {
+				$this->_oAddress = new Address();
 			}
-			return $aData;
+			return $this->_oAddress;
+		}
+
+		/**
+		 * Accessor for the ship-to address.
+		 * @return Address
+		 * @access public
+		 * @api
+		 */
+		public function shippingAddress() {
+			if ( NULL == $this->_oShippingAddress ) {
+				$this->_oShippingAddress = new Address();
+			}
+			return $this->_oShippingAddress;
 		}
 
 	}

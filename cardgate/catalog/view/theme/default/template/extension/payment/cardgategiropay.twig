@@ -1,27 +1,25 @@
-<form class="form-horizontal">
-  	<img style="max-width:100px" src="./image/payment/cgp/giropay.png" alt="Giropay">
- </form>
-  <div class="buttons">
-  <div class="pull-right">
-  <input type="button" value="{{ button_confirm }}" id="button-confirm" data-loading-text="Loading..." class="btn btn-primary" />
-  </div>
+<div class="buttons">
+    <form action="" method="POST" id="cardgate_checkout">
+        <input type="hidden" name="option" value="giropay" />
+        <img style="max-width:100px" src="./image/payment/cgp/giropay.png" alt="Giropay">
+    </form>
+</div>
+<div class="buttons">
+    <div class="pull-right">
+        <input type="button" value="{{ button_confirm }}" id="cardgate-confirm" onclick="redirectClient()" class="btn btn-primary" />
+    </div>
 </div>
 
 <script type="text/javascript"><!--
-$('#button-confirm').bind('click', function() {
-	$.ajax({
-		url: 'index.php?route=extension/payment/cardgategiropay/confirm',
-		type: 'get',
-		dataType: 'json',
-		beforeSend: function() {
-			$('#button-confirm').attr('disabled', true);
-			$('#payment').before('<div class="alert alert-info"><i class="fa fa-info-circle"></i> Processing, please wait...</div>');
-		},
-		complete: function() {
-			$('.alert-dismissible').remove();
-			$('#button-confirm').attr('disabled', false);
-		},
-		success: function (data){
+ function redirectClient(response) {
+        $.ajax({
+            type: 'GET',
+            url: 'index.php?route=extension/payment/cardgategiropay/confirm',
+            beforeSend: function () {
+                $('form#cardgate_checkout').hide();
+                $('form#cardgate_checkout').before('<div class="attention"><img src="catalog/view/theme/default/image/loading.gif" alt="" />{{ redirect_message }}</div>');
+            },
+            success: function (data){
                 if (data.status == "success"){
                     location = data.redirect;
                 }
@@ -29,6 +27,6 @@ $('#button-confirm').bind('click', function() {
                     alert(data.error);
                 } 
             }
-	});
-});
+        });
+    }
 //--></script>

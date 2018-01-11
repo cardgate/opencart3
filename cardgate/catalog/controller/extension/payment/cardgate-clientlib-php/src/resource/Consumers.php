@@ -25,70 +25,22 @@
  * @copyright   CardGate B.V.
  * @link        https://www.cardgate.com
  */
-namespace cardgate\api {
+namespace cardgate\api\resource {
 
 	/**
-	 * Customer instance.
-	 *
-	 * @method Customer setEmail( string $sEmail_ )
-	 * @method string getEmail()
-	 * @method boolean hasEmail()
-	 * @method Customer unsetEmail()
-	 *
-	 * @method Customer setPhone( string $sPhone_ )
-	 * @method string getPhone()
-	 * @method boolean hasPhone()
-	 * @method Customer unsetPhone()
+	 * CardGate resource object.
 	 */
-	final class Customer extends Entity {
+	final class Consumers extends Base {
 
 		/**
-		 * @ignore
-		 * @internal The methods these fields expose are configured in the class phpdoc.
-		 */
-		static $_aFields = [
-			'Email'			=> 'email',
-			'Phone'			=> 'phone'
-		];
-
-		/**
-		 * The bill-to address.
-		 * @var Address
-		 * @access private
-		 */
-		private $_oAddress = NULL;
-
-		/**
-		 * The ship-to address.
-		 * @var Address
-		 * @access private
-		 */
-		private $_oShippingAddress = NULL;
-
-		/**
-		 * Accessor for the bill-to address.
-		 * @return Address
+		 * This method can be used to create a new consumer.
+		 * @return \cardgate\api\Consumer
+		 * @throws Exception
 		 * @access public
 		 * @api
 		 */
-		public function address() {
-			if ( NULL == $this->_oAddress ) {
-				$this->_oAddress = new Address();
-			}
-			return $this->_oAddress;
-		}
-
-		/**
-		 * Accessor for the ship-to address.
-		 * @return Address
-		 * @access public
-		 * @api
-		 */
-		public function shippingAddress() {
-			if ( NULL == $this->_oShippingAddress ) {
-				$this->_oShippingAddress = new Address();
-			}
-			return $this->_oShippingAddress;
+		public function create() {
+			return new \cardgate\api\Consumer();
 		}
 
 	}

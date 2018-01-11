@@ -620,7 +620,7 @@ foreach ( $data as $k => $v ) {
 echo 'files copied<br>';
 
 // Get real path for our folder
-$rootPath = '/home/richard/websites/opencart3/htdocs/_plugin/cardgate';
+$rootPath = '/var/www/opencart3/htdocs/_plugin/cardgate';
 $filename = 'cardgate.zip';
 
 zipfiles($filename, $rootPath);

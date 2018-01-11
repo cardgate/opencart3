@@ -72,25 +72,25 @@ class ControllerExtensionPaymentCardGate extends Controller {
 			}
 			
 			// Configure customer.
-			$oCustomer = $oTransaction->getCustomer ();
-			$oCustomer->setEmail ( $order_info ['email'] );
-			$oCustomer->address ()->setFirstName ( $order_info ['payment_firstname'] );
-			$oCustomer->address ()->setLastName ( $order_info ['payment_lastname'] );
+			$oConsumer = $oTransaction->getConsumer ();
+			$oConsumer->setEmail ( $order_info ['email'] );
+			$oConsumer->address ()->setFirstName ( $order_info ['payment_firstname'] );
+			$oConsumer->address ()->setLastName ( $order_info ['payment_lastname'] );
 			if (! is_null ( $order_info ['payment_address_1'] )) {
-				$oCustomer->address ()->setAddress ( $order_info ['payment_address_1'] . ($order_info ['payment_address_2'] ? ', ' . $order_info ['payment_address_2'] : '') );
+				$oConsumer->address ()->setAddress ( $order_info ['payment_address_1'] . ($order_info ['payment_address_2'] ? ', ' . $order_info ['payment_address_2'] : '') );
 			}
-			$oCustomer->address ()->setZipCode ( $order_info ['payment_postcode'] );
-			$oCustomer->address ()->setCity ( $order_info ['payment_city'] );
-			$oCustomer->address ()->setCountry ( $order_info ['payment_iso_code_2'] );
+			$oConsumer->address ()->setZipCode ( $order_info ['payment_postcode'] );
+			$oConsumer->address ()->setCity ( $order_info ['payment_city'] );
+			$oConsumer->address ()->setCountry ( $order_info ['payment_iso_code_2'] );
 			
 			if ($this->cart->hasShipping ()) {
 				
-				$oCustomer->shippingAddress ()->setFirstName ( $order_info ['shipping_firstname'] );
-				$oCustomer->shippingAddress ()->setLastName ( $order_info ['shipping_lastname'] );
-				$oCustomer->shippingAddress ()->setAddress ( $order_info ['shipping_address_1'] );
-				$oCustomer->shippingAddress ()->setZipCode ( $order_info ['shipping_postcode'] );
-				$oCustomer->shippingAddress ()->setCity ( $order_info ['shipping_city'] );
-				$oCustomer->shippingAddress ()->setCountry ( $order_info ['shipping_iso_code_2'] );
+				$oConsumer->shippingAddress ()->setFirstName ( $order_info ['shipping_firstname'] );
+				$oConsumer->shippingAddress ()->setLastName ( $order_info ['shipping_lastname'] );
+				$oConsumer->shippingAddress ()->setAddress ( $order_info ['shipping_address_1'] );
+				$oConsumer->shippingAddress ()->setZipCode ( $order_info ['shipping_postcode'] );
+				$oConsumer->shippingAddress ()->setCity ( $order_info ['shipping_city'] );
+				$oConsumer->shippingAddress ()->setCountry ( $order_info ['shipping_iso_code_2'] );
 			}
 			
 			$calculate = $this->config->get ( 'config_tax' );
@@ -248,7 +248,6 @@ class ControllerExtensionPaymentCardGate extends Controller {
 	 */
 	public function control() {
 		$data = $_REQUEST;
-		
 		try {
 			
 			include 'cardgate-clientlib-php/init.php';
