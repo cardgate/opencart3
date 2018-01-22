@@ -43,7 +43,7 @@ Please visit [My Cardgate](https://my.cardgate.com/) and retrieve your RESTful A
 
 11. Repeat **steps 11 through 12** for each **payment method** you wish to **activate**.
 
-12. Fo to [My CardGate](https://my.cardgate.com/), choose **Sites** and select the appropriate site.
+12. Go to [My CardGate](https://my.cardgate.com/), choose **Sites** and select the appropriate site.
 
 13. Go to **Connection to the website** and enter the **Hashkey**, if you did so in the **CardGate Generic payment method**.
 
