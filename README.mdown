@@ -27,7 +27,7 @@ Please visit [My Cardgate](https://my.cardgate.com/) and retrieve your RESTful A
 
 2. Scroll to the CardGate Generic payment method and select Install.
 
-3. Now click on the Edit button of the payent method and go to the General tab. 
+3. Now click on the Edit button of the payent method and go to the General tab.
 
 4. Enter the Site ID, the Merchant ID, the Merchant API key, and optionally the Hash Key.
 
@@ -45,8 +45,8 @@ Please visit [My Cardgate](https://my.cardgate.com/) and retrieve your RESTful A
 
 11. Repeat steps 11 through 12 for each payment method you wish to activate.
 
-12. Fo to My CardGate, choose Sites and select the appropriate site.  
- 
+12. Fo to My CardGate, choose Sites and select the appropriate site.
+
 13. Go to Connection to the website and enter the Hashkey, if you d id so in the CardGate Generic payment method.
 
 14. When you are finished testing make sure that you switch all activated payment methods fron Test mode to Live mode and save it (Save).
