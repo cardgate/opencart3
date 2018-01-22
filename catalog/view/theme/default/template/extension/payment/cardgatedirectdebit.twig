@@ -1,0 +1,34 @@
+<form class="form-horizontal">
+  	<img style="max-width:100px" src="./image/payment/cgp/directdebit.png" alt="DirectDebit">
+ </form>
+  <div class="buttons">
+  <div class="pull-right">
+  <input type="button" value="{{ button_confirm }}" id="button-confirm" data-loading-text="Loading..." class="btn btn-primary" />
+  </div>
+</div>
+
+<script type="text/javascript"><!--
+$('#button-confirm').bind('click', function() {
+	$.ajax({
+		 url: 'index.php?route=extension/payment/cardgatedirectdebit/confirm',
+		type: 'get',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#button-confirm').attr('disabled', true);
+			$('#payment').before('<div class="alert alert-info"><i class="fa fa-info-circle"></i> Processing, please wait...</div>');
+		},
+		complete: function() {
+			$('.alert-dismissible').remove();
+			$('#button-confirm').attr('disabled', false);
+		},
+		success: function (data){
+                if (data.status == "success"){
+                    location = data.redirect;
+                }
+                if (data.status == "failed"){
+                    alert(data.error);
+                } 
+            }
+	});
+});
+//--></script>
