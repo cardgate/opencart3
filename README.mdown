@@ -29,7 +29,7 @@ Please visit [My Cardgate](https://my.cardgate.com/) and retrieve your RESTful A
 
 4. Enter the **Site ID**, the **Merchant ID**, the **Merchant API key**, and optionally the **Hash Key**.
 
-5. You can find thee variables under **Sites** on [My CardGate](https://my.cardgate.com/).
+5. You can find these variables under **Sites** on [My CardGate](https://my.cardgate.com/).
 
 6. Enter the other values and set the **Plugin Status** to **Active**.
 
@@ -41,7 +41,7 @@ Please visit [My Cardgate](https://my.cardgate.com/) and retrieve your RESTful A
 
 10. Click the **Edit** button of this payment method and set the **Plugin status** to **Active**.
 
-11. Repeat **steps 11 through 12** for each **payment method** you wish to **activate**.
+11. Repeat **steps 9 through 10** for each **payment method** you wish to **activate**.
 
 12. Go to [My CardGate](https://my.cardgate.com/), choose **Sites** and select the appropriate site.
 
