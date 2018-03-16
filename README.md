@@ -6,7 +6,7 @@
 
 ## Support
 
-This plugin supports Opencart version **3.X**.
+This extension supports Opencart version **3.X**.
 
 ## Preparation
 
