@@ -2,8 +2,6 @@
 
 # CardGate module voor Opencart 3.X
 
-[![Build Status](https://travis-ci.org/cardgate/opencart3.svg?branch=master)](https://travis-ci.org/cardgate/opencart3)
-
 ## Support
 
 Deze extensie is geschikt voor OpenCart versie **3.x**
