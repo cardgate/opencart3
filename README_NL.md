@@ -25,9 +25,9 @@ gegevens op, of neem contact op met je accountmanager.
 
 3. Klik nu op de **Edit** knop van de betaalmethode en ga naar de **General** tab.
 
-4. Vul de **site ID**, **hash key**, **Merchant ID**, de **API key** in.
+4. Vul de **site ID**, **hash key**, **merchant ID**, de **API key** in.
 
-5. Deze variabelen zijn de vinden bij **Sites** op [My CardGate](https://my.cardgate.com/).
+5. Deze variabelen zijn de vinden bij **Sites** op [Mijn CardGate](https://my.cardgate.com/).
 
 6. Vul de andere waarden in, en stel de **Plugin Status** in op **Active**.
 
@@ -41,7 +41,7 @@ gegevens op, of neem contact op met je accountmanager.
 
 11. Herhaal **stappen 9 en 10** voor elke **betaalmethode** die je wilt **activeren**.
 
-12. Ga naar [My CardGate](https://my.cardgate.com/), en kies **Sites** en selecteer de juiste site.
+12. Ga naar [Mijn CardGate](https://my.cardgate.com/), en kies **Sites** en selecteer de juiste site.
 
 13. Ga naar **Technische koppeling** en vul dezelfde **hash key** in, die je ingevuld hebt bij de **CardGate Generic betaalmethode**.
 
