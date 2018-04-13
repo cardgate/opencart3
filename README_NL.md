@@ -25,7 +25,7 @@ gegevens op, of neem contact op met je accountmanager.
 
 3. Klik nu op de **Edit** knop van de betaalmethode en ga naar de **General** tab.
 
-4. Vul de **site ID**, **hash key**, **Merchant ID**, de **API key** in.
+4. Vul de **site ID**, **hash key**, **merchant ID**, de **API key** in.
 
 5. Deze variabelen zijn de vinden bij **Sites** op [My CardGate](https://my.cardgate.com/).
 
