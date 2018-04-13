@@ -17,15 +17,15 @@
  */
 
 // Heading
-$_['heading_title']          = 'Cardgate Generic';
+$_['heading_title']          = 'CardGate Generic';
 
 // Text 
 $_['text_general']           = 'General';
 $_['text_order_status']      = 'Order Status';
 $_['text_info']              = 'Info';
 $_['text_payment']           = 'Payment';
-$_['text_success']           = 'Success: You have modified Cardgate Generic account details!';
-$_['text_cardgate']          = '<a onclick="window.open(\'http://www.cardgate.com/\');"><img src="view/image/payment/cardgateplus.png" alt="Cardgate Generic" title="Cardgate Generic" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_success']           = 'Success: You have modified CardGate Generic account details!';
+$_['text_cardgate']          = '<a onclick="window.open(\'http://www.cardgate.com/\');"><img src="view/image/payment/cardgateplus.png" alt="CardGate Generic" title="Cardgate Generic" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_test_mode']         = 'Test mode';
 $_['text_live_mode']         = 'Live mode';
 $_['text_language_dutch']    = 'Dutch';
@@ -41,11 +41,11 @@ $_['text_language_russian']  = 'Russian';
 $_['text_language_swedish']  = 'Swedish';
 $_['text_set_order_status']  = 'Set Order Status';
 $_['text_author']            = '<a href="http://www.cardgate.com/" target="_blank">www.cardgate.com</a>';
-$_['text_test_mode_help']    = 'Switching between test and live mode. If you don\'t have an account, sign up at http://www.cardgate.com/" .';
-$_['text_site_id']           = 'Fill in your Site ID number. You can find your Site ID number at your CardGate Merchant Backoffice.';
-$_['text_hash_key']          = 'Fill in your Hashkey. If you use the Hashkey, make sure it is the same as in your CardGate Merchant Backoffice.';
-$_['text_merchant_id']       = 'Fill in your Merchant ID number. You can find your Merchant ID number at your CardGate Merchant Backoffice.';
-$_['text_api_key']           = 'Fill in you Merchant API Key. This hs been given to you by your account manager';
+$_['text_test_mode_help']    = 'Switching between Test and Live mode. If you don\'t have an account, sign up at http://www.cardgate.com/" .';
+$_['text_site_id']           = 'Fill in your site ID. You can find your site ID at your CardGate merchant backoffice.';
+$_['text_hash_key']          = 'Fill in your hash key. If you use the hash key, make sure it is the same as in your CardGate merchant backoffice.';
+$_['text_merchant_id']       = 'Fill in your merchant ID number. You can find your merchant ID at your CardGate merchant backoffice.';
+$_['text_api_key']           = 'Fill in you API key. This has been given to you by your account manager';
 $_['text_gateway_language']  = 'Setting a default language interface of the gateway.';
 $_['text_order_description'] = 'Payment description that will be shown to the customer in the gateway screen. Variables: <b>%id%</b> = Order ID';
 $_['text_total']             = 'The checkout total the order must reach before this payment method becomes active.';
@@ -56,9 +56,9 @@ $_['text_author']            = 'Author:';
 // Entry
 $_['entry_test_mode']         = 'Test/Live Mode:';
 $_['entry_site_id']           = 'Site ID:';
-$_['entry_hash_key']           = 'Hash key:';
+$_['entry_hash_key']          = 'Hash key:';
 $_['entry_merchant_id']       = 'Merchant ID:';
-$_['entry_api_key']           = 'Merchant API key:';
+$_['entry_api_key']           = 'API key:';
 $_['entry_payment_methods']   = 'Payment methods:';
 $_['entry_gateway_language']  = 'Gateway Language:';
 $_['entry_order_description'] = 'Order Description:';
@@ -77,7 +77,7 @@ $_['entry_author']           = '<a href="http_//www.cardgate.com">cardgate</a>';
 
 // Error
 $_['error_permission']       = 'Warning: You do not have permission to modify payment Card Gate Plus!';
-$_['error_site_id']          = 'Site ID Required.';
-$_['error_merchant_id']      = 'Merchant ID Required.';
-$_['error_api_key']          = 'Merchant API key Required.';
+$_['error_site_id']          = 'Site ID required.';
+$_['error_merchant_id']      = 'Merchant ID required.';
+$_['error_api_key']          = 'API key required.';
 $_['error_payment_method']   = 'Please select at least one payment method.';

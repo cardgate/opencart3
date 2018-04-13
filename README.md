@@ -4,12 +4,12 @@
 
 ## Support
 
-This extension supports Opencart version **3.X**.
+This extension supports Opencart version **3.X** .
 
 ## Preparation
 
 The usage of this module requires that you have obtained CardGate RESTful API credentials.
-Please visit [My Cardgate](https://my.cardgate.com/) and retrieve your RESTful API username and password, or contact your accountmanager.
+Please visit [My Cardgate](https://my.cardgate.com/) and retrieve your credentials, or contact your accountmanager.
 
 ## Installation
 
@@ -25,7 +25,7 @@ Please visit [My Cardgate](https://my.cardgate.com/) and retrieve your RESTful A
 
 3. Now click on the **Edit** button of the payent method and go to the **General** tab.
 
-4. Enter the **Site ID**, the **Merchant ID**, the **Merchant API key**, and optionally the **Hash Key**.
+4. Enter the **site ID**, **hash key**, **merchant ID**, and the **API key** .
 
 5. You can find these variables under **Sites** on [My CardGate](https://my.cardgate.com/).
 
