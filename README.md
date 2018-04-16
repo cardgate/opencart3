@@ -13,9 +13,9 @@ Please visit [My CardGate](https://my.cardgate.com/) and retrieve your credentia
 
 ## Installation
 
-1. Download and unzip the [cardgate.zip](https://github.com/cardgate/opencart3/releases/) file on your desktop.
+1. Download and unzip de [source code](https://github.com/cardgate/opencart3/releases/) file on your desktop.
 
-2. Upload the **contents** of the cardgate folder in the zip file to the folders **with the same name** on your webshop.
+2. Upload the **contents** of the zip file to the folders **with the same name** on your webshop.
 
 ## Configuration
 
