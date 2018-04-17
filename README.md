@@ -1,19 +1,19 @@
 ![CardGate](https://cdn.curopayments.net/thumb/200/logos/cardgate.png)
 
-# CardGate module for Opencart 3.X
+# CardGate extension for Opencart 3.x
 
 ## Support
 
-This extension supports Opencart version **3.X** .
+This extension supports Opencart version **3.x** .
 
 ## Preparation
 
-The usage of this module requires that you have obtained CardGate RESTful API credentials.
+The usage of this module requires that you have obtained CardGate RESTful API credentials.  
 Please visit [My CardGate](https://my.cardgate.com/) and retrieve your credentials, or contact your accountmanager.
 
 ## Installation
 
-1. Download and unzip de [source code](https://github.com/cardgate/opencart3/releases/) file on your desktop.
+1. Download and unzip the most recent [source code](https://github.com/cardgate/opencart3/releases/) file on your desktop.
 
 2. Upload the **contents** of the zip file to the folders **with the same name** on your webshop.
 
@@ -25,7 +25,7 @@ Please visit [My CardGate](https://my.cardgate.com/) and retrieve your credentia
 
 3. Now click on the **Edit** button of the payment method and go to the **General** tab.
 
-4. Enter the **site ID**, **hash key**, **merchant ID**, and the **API key** .
+4. Enter the **site ID**, **hash key**, **merchant ID**, and the **API key**.
 
 5. You can find these variables under **Sites** on [My CardGate](https://my.cardgate.com/).
 

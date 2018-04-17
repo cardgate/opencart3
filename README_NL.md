@@ -1,15 +1,16 @@
 ![CardGate](https://cdn.curopayments.net/thumb/200/logos/cardgate.png)
 
-# CardGate extensie voor Opencart 3.X
+# CardGate extensie voor Opencart 3.x
 
 ## Support
 
 Deze extensie is geschikt voor OpenCart versie **3.x** .
 
 ## Voorbereiding
+
 Voor het gebruik van deze module zijn CardGate RESTful gegevens nodig.  
-Bezoek hiervoor [Mijn CardGate](https://my.cardgate.com/) en haal daar je  
-gegevens op, of neem contact op met je accountmanager.  
+Bezoek hiervoor [Mijn CardGate](https://my.cardgate.com/) en haal daar je  gegevens op,  
+of neem contact op met je accountmanager.  
 
 ## Installatie
 
@@ -25,7 +26,7 @@ gegevens op, of neem contact op met je accountmanager.
 
 3. Klik nu op de **Edit** knop van de betaalmethode en ga naar de **General** tab.
 
-4. Vul de **site ID**, **hash key**, **merchant ID**, de **API key** in.
+4. Vul de **site ID**, **hash key**, **merchant ID**, en de **API key** in.
 
 5. Deze variabelen zijn de vinden bij **Sites** op [Mijn CardGate](https://my.cardgate.com/).
 
