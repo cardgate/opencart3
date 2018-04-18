@@ -1,23 +1,21 @@
 ![CardGate](https://cdn.curopayments.net/thumb/200/logos/cardgate.png)
 
-# CardGate module for Opencart 3.X
-
-[![Build Status](https://travis-ci.org/cardgate/opencart3.svg?branch=master)](https://travis-ci.org/cardgate/opencart3)
+# CardGate extension for Opencart 3.x
 
 ## Support
 
-This extension supports Opencart version **3.X**.
+This extension supports Opencart version **3.x** .
 
 ## Preparation
 
-The usage of this module requires that you have obtained CardGate RESTful API credentials.
-Please visit [My Cardgate](https://my.cardgate.com/) and retrieve your RESTful API username and password, or contact your accountmanager.
+The usage of this module requires that you have obtained CardGate RESTful API credentials.  
+Please visit [My CardGate](https://my.cardgate.com/) and retrieve your credentials, or contact your accountmanager.
 
 ## Installation
 
-1. Download and unzip the [cardgate.zip](https://github.com/cardgate/opencart3/releases/) file on your desktop.
+1. Download and unzip the most recent [source code](https://github.com/cardgate/opencart3/releases/) file on your desktop.
 
-2. Upload the **contents** of the cardgate folder in the zip file to the folders **with the same name** on your webshop.
+2. Upload the **contents** of the zip file to the folders **with the same name** on your webshop.
 
 ## Configuration
 
@@ -25,9 +23,9 @@ Please visit [My Cardgate](https://my.cardgate.com/) and retrieve your RESTful A
 
 2. Scroll to the **CardGate Generic payment method** and select **Install**.
 
-3. Now click on the **Edit** button of the payent method and go to the **General** tab.
+3. Now click on the **Edit** button of the payment method and go to the **General** tab.
 
-4. Enter the **Site ID**, the **Merchant ID**, the **Merchant API key**, and optionally the **Hash Key**.
+4. Enter the **site ID**, **hash key**, **merchant ID**, and the **API key**.
 
 5. You can find these variables under **Sites** on [My CardGate](https://my.cardgate.com/).
 
@@ -45,7 +43,7 @@ Please visit [My Cardgate](https://my.cardgate.com/) and retrieve your RESTful A
 
 12. Go to [My CardGate](https://my.cardgate.com/), choose **Sites** and select the appropriate site.
 
-13. Go to **Connection to the website** and enter the **Hashkey**, if you did so in the **CardGate Generic payment method**.
+13. Go to **Connection to the website** and enter the **hash key**, if you did so in the **CardGate Generic payment method**.
 
 14. When you are **finished testing** make sure that you switch **all activated payment methods** from **Test mode** to **Live mode** and save it (**Save**).
 

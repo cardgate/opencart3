@@ -17,15 +17,15 @@
  */
 
 // Heading
-$_['heading_title']          = 'Cardgate Creditcard';
+$_['heading_title']          = 'CardGate Creditcard';
 
 // Text 
 $_['text_general']           = 'General';
 $_['text_order_status']      = 'Order Status';
 $_['text_info']              = 'Info';
 $_['text_payment']           = 'Payment';
-$_['text_success']           = 'Success: You have modified Cardgate Creditcard account details!';
-$_['text_cardgatecreditcard'] = '<a onclick="window.open(\'http://www.cardgate.com/\');"><img src="view/image/payment/cardgateplus.png" alt="Cardgate Creditcard" title="Cardgate Creditcard" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_success']           = 'Success: You have modified CardGate Creditcard account details!';
+$_['text_cardgatecreditcard'] = '<a onclick="window.open(\'http://www.cardgate.com/\');"><img src="view/image/payment/cardgateplus.png" alt="CardGate Creditcard" title="CardGate Creditcard" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_test_mode']         = 'Test mode';
 $_['text_live_mode']         = 'Live mode';
 $_['text_language_dutch']    = 'Dutch';
@@ -68,7 +68,7 @@ $_['entry_payment_fraud_status']       = 'Payment fraud status:';
 $_['entry_plugin_status']    = 'Plugin Status:';
 $_['entry_sort_order']       = 'Sort Order:';
 $_['entry_version_status']   = 'Plugin Version:';
-$_['entry_author']           = '<a href="http_//www.cardgate.com">cardgate</a>';
+$_['entry_author']           = '<a href="http_//www.cardgate.com">CardGate</a>';
 
 // Error
 $_['error_permission']       = 'Warning: You do not have permission to modify payment Card Gate Plus!';
