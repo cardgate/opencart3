@@ -9,7 +9,6 @@ class ControllerExtensionTotalCardgatefee extends Controller {
 		$this->load->model ( 'setting/setting' );
 		
 		if (($this->request->server ['REQUEST_METHOD'] == 'POST') && $this->validate ()) {
-			//var_dump($this->request->post);die;
 			$this->model_setting_setting->editSetting ( 'total_cardgatefee', $this->request->post );
 			$this->session->data ['success'] = $this->language->get ( 'text_success' );
 			
@@ -23,7 +22,7 @@ class ControllerExtensionTotalCardgatefee extends Controller {
 		$data ['text_none'] = $this->language->get ( 'text_none' );
 		
 		$data ['entry_name'] = $this->language->get ( 'entry_name' );
-		$data ['entry_cost'] = $this->language->get ( 'entry_cost' );
+		$data ['entry_cost_percentage'] = $this->language->get ( 'entry_cost_percentage' );
 		$data ['entry_cost'] = $this->language->get ( 'entry_cost' );
 		$data ['entry_geo_zone'] = $this->language->get ( 'entry_geo_zone' );
 		$data ['entry_tax'] = $this->language->get ( 'entry_tax' );
@@ -76,6 +75,12 @@ class ControllerExtensionTotalCardgatefee extends Controller {
 				$data ['method_data'] [$i] ['total_cardgatefee_name'] = $this->request->post ['total_cardgatefee_name' . $i];
 			} else {
 				$data ['method_data'] [$i] ['total_cardgatefee_name'] = $this->config->get ( 'total_cardgatefee_name' . $i );
+			}
+			
+			if (isset ( $this->request->post ['total_cardgatefee_cost_percentage' . $i] )) {
+			    $data ['method_data'] [$i] ['total_cardgatefee_cost_percentage'] = $this->request->post ['total_cardgatefee_cost_percentage' . $i];
+			} else {
+			    $data ['method_data'] [$i] ['total_cardgatefee_cost_percentage'] = $this->config->get ( 'total_cardgatefee_cost_percentage' . $i );
 			}
 			
 			if (isset ( $this->request->post ['total_cardgatefee_cost' . $i] )) {
