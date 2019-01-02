@@ -78,8 +78,22 @@ class ModelExtensionTotalCardgatefee extends Model {
 				
 				$tax_vat = 0;
 				
+				if ($this->config->get('total_cardgatefee_cost' .$i)){
+				    $total_fee = (float)$this->config->get('total_cardgatefee_cost' .$i);
+				} else {
+				    $total_fee = 0;
+				}
+				
+				if ($this->config->get('total_cardgatefee_cost_percentage' . $i)){
+				    $total_percentage_fee = (float) $this->cart->getSubTotal() * ($this->config->get('total_cardgatefee_cost_percentage' . $i)/100);
+				} else {
+				    $total_percentage_fee = 0;
+				}
+				
+				$total_cardgatefee_cost = $total_fee + $total_percentage_fee;
+				
 				if ($this->config->get ( 'total_cardgatefee_tax_class_id' . $i )) {
-					$tax_rates = $this->tax->getRates ( $this->config->get ( 'total_cardgatefee_cost' . $i ), $this->config->get ( 'total_cardgatefee_tax_class_id' . $i ) );
+					$tax_rates = $this->tax->getRates ( $total_cardgatefee_cost, $this->config->get ( 'total_cardgatefee_tax_class_id' . $i ) );
 					
 					foreach ( $tax_rates as $tax_rate ) {
 						if (! isset ( $total ['taxes'] [$tax_rate ['tax_rate_id']] )) {
@@ -94,17 +108,17 @@ class ModelExtensionTotalCardgatefee extends Model {
 				
 				$this->session->data ['cardgatefees'] [$i] ['code'] = 'total_cardgatefee';
 				$this->session->data ['cardgatefees'] [$i] ['name'] = $this->config->get ( 'total_cardgatefee_name' . $i );
-				$this->session->data ['cardgatefees'] [$i] ['amount'] = round ( $this->config->get ( 'total_cardgatefee_cost' . $i ) * 100 );
+				$this->session->data ['cardgatefees'] [$i] ['amount'] = round($total_cardgatefee_cost ,2);
 				$this->session->data ['cardgatefees'] [$i] ['vat_amount'] = round ( $tax_vat * 100 );
 				
 				$total ['totals'] [] = array (
 						'code' => 'cardgatefee',
 						'title' => $this->config->get ( 'total_cardgatefee_name' . $i ),
-						'value' => $this->config->get ( 'total_cardgatefee_cost' . $i ),
+				        'value' => round ( $total_cardgatefee_cost, 2),
 						'sort_order' => $this->config->get ( 'total_cardgatefee_sort_order' . $i ) 
 				);
 				
-				$total ['total'] += $this->config->get ( 'total_cardgatefee_cost' . $i );
+				$total ['total'] += round ( $total_cardgatefee_cost, 2);
 			}
 		}
 	}
