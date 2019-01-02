@@ -17,6 +17,7 @@ $_['entry_status']     = 'Status:';
 $_['entry_sort_order'] = 'Sorteer Order:';
 
 $_['entry_name'] = 'Fee Titel:';
+$_['entry_cost_percentage'] = 'Fee Percentage:';
 $_['entry_cost'] = 'Fee Bedrag:';
 $_['entry_tax']  = 'Tax Class:';
 $_['entry_geo_zone']  = 'Geo Zone:';

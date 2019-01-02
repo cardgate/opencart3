@@ -68,8 +68,11 @@
 		<div class="form-group">
             <label class="col-sm-2 control-label">{{ entry_name }}</label>
             <div class="col-sm-10"><input class="form-control" type="text" name="total_cardgatefee_name{{ loop.index }}" value="{{ data.total_cardgatefee_name }}" /></div>
-          </div>
-          
+            </div> 
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_cost_percentage }}</label>
+            <div class="col-sm-10"><input class="form-control" type="text" name="total_cardgatefee_cost_percentage{{ loop.index }}" value="{{ data.total_cardgatefee_cost_percentage }}" /> </div>
+          </div> 
             <div class="form-group">
             <label class="col-sm-2 control-label">{{ entry_cost }}</label>
             <div class="col-sm-10"><input class="form-control" type="text" name="total_cardgatefee_cost{{ loop.index }}" value="{{ data.total_cardgatefee_cost }}" /> </div>
