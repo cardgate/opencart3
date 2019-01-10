@@ -48,6 +48,8 @@ $_['text_merchant_id']       = 'Fill in your merchant ID number. You can find yo
 $_['text_api_key']           = 'Fill in you API key. This has been given to you by your account manager';
 $_['text_gateway_language']  = 'Setting a default language interface of the gateway.';
 $_['text_order_description'] = 'Payment description that will be shown to the customer in the gateway screen. Variables: <b>%id%</b> = Order ID';
+$_['text_use_logo']          = 'Show the payment method logo in the checkout';
+$_['text_use_title']          = 'Show the payment method title in the checkout';
 $_['text_total']             = 'The checkout total the order must reach before this payment method becomes active.';
 $_['text_control_url']       = 'Control Url:';
 $_['text_plugin_version']    = 'Plugin version';
@@ -62,6 +64,8 @@ $_['entry_api_key']           = 'API key:';
 $_['entry_payment_methods']   = 'Payment methods:';
 $_['entry_gateway_language']  = 'Gateway Language:';
 $_['entry_order_description'] = 'Order Description:';
+$_['entry_use_logo']          = 'Use Logo';
+$_['entry_use_title']         = 'Use payment method name';
 $_['entry_total']             = 'Total:';
 $_['entry_geo_zone']          = 'Geo Zone:';
 

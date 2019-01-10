@@ -33,9 +33,27 @@ class ModelExtensionPaymentCardGateIdeal extends Model {
         } else {
             $status = false;
         }
-
-        $title = $this->language->get( 'text_title' );
-
+        
+        $title = '';
+        
+        if ($this->config->get('payment_cardgate_use_logo') == 1){
+            $title = '<img style="height:100%; width:100%; max-height: 30px; max-width: 60px;" src="image/payment/cgp/ideal.svg" /> ';
+        }
+        
+        if ($this->config->get('payment_cardgate_use_title') == 1){
+            $title .= $this->language->get( 'text_title' ).' ';
+        }
+        
+        if ($this->config->get('payment_cardgateideal_custom_payment_method_text')){
+            $title .= $this->config->get('payment_cardgateideal_custom_payment_method_text').' ';
+        }
+        
+        trim($title);
+        
+        if ($title == ''){
+            $title = $this->language->get( 'text_title' );
+        }
+        
         $method_data = array();
         if ( $status ) {
             $method_data = array(
