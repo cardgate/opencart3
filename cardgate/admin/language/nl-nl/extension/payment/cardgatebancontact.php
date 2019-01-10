@@ -46,6 +46,7 @@ $_['text_test_mode_help']    = 'U gaat nu van test naar live modus. Indien u gee
 $_['text_site_id']           = 'Vul hier uw Site ID in. Deze kunt u vinden in de Cardgate Merchant Backoffice.';
 $_['text_gateway_language']  = 'Stel een standaard taal in voor de gateway.';
 $_['text_order_description'] = 'Omschrijving voor de betaling welke getoond zal worden in het betaalscherm. Variabelen: <b>%id%</b> = Order ID';
+$_['text_custom_payment_method_text'] = 'Gebruik een aangepaste text voor de betaalmethode';
 $_['text_total']             = 'Het order totaal moet boven dit bedrag zijn om de betaal methode te tonen.';
 $_['text_control_url']       = 'Control Url:';
 $_['text_plugin_version']    = 'Plugin versie';
@@ -57,6 +58,7 @@ $_['entry_site_id']           = 'Site ID:';
 $_['entry_payment_title']     = 'Titel:';
 $_['entry_gateway_language']  = 'Gateway Taal:';
 $_['entry_order_description'] = 'Omschrijving Bestelling:';
+$_['entry_custom_payment_method_text'] = 'Custom betaalmethode text:'; 
 $_['entry_total']             = 'Totaal:';
 $_['entry_geo_zone']          = 'Geo Zone:';
 

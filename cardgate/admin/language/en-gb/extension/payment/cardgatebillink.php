@@ -45,6 +45,7 @@ $_['text_test_mode_help']    = 'Switching between test and live mode. If you don
 $_['text_site_id']           = 'Fill in you Site ID number. You can find your Site ID number at your CardGate Merchant Backoffice.';
 $_['text_gateway_language']  = 'Setting a default language interface of the gateway.';
 $_['text_order_description'] = 'Payment description that will be shown to the customer in the gateway screen. Variables: <b>%id%</b> = Order ID';
+$_['text_custom_payment_method_text'] = 'Use your own payment method text in the checkout.';
 $_['text_total']             = 'The checkout total the order must reach before this payment method becomes active.';
 $_['text_control_url']       = 'Control Url:';
 $_['text_plugin_version']    = 'Plugin version';
@@ -57,6 +58,7 @@ $_['entry_payment_methods']   = 'Payment methods:';
 $_['entry_gateway_language']  = 'Gateway Language:';
 $_['entry_order_description'] = 'Order Description:';
 $_['entry_total']             = 'Total:';
+$_['entry_custom_payment_method_text'] = 'Custom payment method text:';
 $_['entry_geo_zone']          = 'Geo Zone:';
 
 $_['entry_payment_initialized_status'] = 'Payment in progress status:';
