@@ -50,6 +50,8 @@ $_['text_merchant_id']       = 'Vul hier uw merchant ID in. Deze kunt u vinden i
 $_['text_api_key']           = 'Vul hier uw API key in . Die heeft u gekregen van uw account manager';
 $_['text_gateway_language']  = 'Stel een standaard taal in voor de gateway.';
 $_['text_order_description'] = 'Omschrijving voor de betaling welke getoond zal worden in het betaalscherm. Variabelen: <b>%id%</b> = Order ID';
+$_['text_use_logo']          = 'Toon het logo van de betaalmehtode in de checkout';
+$_['text_use_title']         = 'Toon de betaalmethode naam in de checkout';
 $_['text_total']             = 'Het order totaal moet boven dit bedrag zijn om de betaal methode te tonen.';
 $_['text_control_url']       = 'Control Url:';
 $_['text_plugin_version']    = 'Plugin versie';
@@ -64,6 +66,8 @@ $_['entry_api_key']           = 'API key:';
 $_['entry_payment_title']     = 'Titel:';
 $_['entry_gateway_language']  = 'Gateway Taal:';
 $_['entry_order_description'] = 'Omschrijving Bestelling:';
+$_['entry_use_logo']          = 'Gebruik Logo';
+$_['entry_use_title']         = 'Gebruik betaalmethode naam';
 $_['entry_total']             = 'Totaal:';
 $_['entry_geo_zone']          = 'Geo Zone:';
 
