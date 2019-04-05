@@ -383,7 +383,7 @@ class ControllerExtensionPaymentCardGate extends Controller {
 	            'name' => htmlspecialchars ( $oException_->getMessage () )
 	        ];
 	    }
-	    mail('richard@cardgate.com','issuer cache', 'refreshed');
+
 	    $sIssuers = serialize($aIssuers);
 	    $this->cache->set('cardgateissuers', $sIssuers);
 	}
