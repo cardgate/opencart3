@@ -17,7 +17,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class ControllerExtensionPaymentCardGate extends Controller {
-	var $version = '3.0.10';
+	var $version = '3.0.11';
 	
 	/**
 	 * Index action
@@ -365,26 +365,37 @@ class ControllerExtensionPaymentCardGate extends Controller {
 	 * Cache bank options
 	 */
 	private function cacheBankOptions() {
-	    $iCacheTime = 24 * 60 * 60;
-	    $iLifeTime = time() + $iCacheTime;
-	    $this->cache->set('cardgateissuerrefresh', $iLifeTime);
-	    
-	    try {
-	        
-	        include 'cardgate-clientlib-php/init.php';
-	        
-	        $oCardGate = new cardgate\api\Client ( ( int ) $this->config->get ( 'payment_cardgate_merchant_id' ), $this->config->get ( 'payment_cardgate_api_key' ), ($this->config->get ( 'payment_cardgate_test_mode' ) == 'test' ? TRUE : FALSE) );
-	        $oCardGate->setIp ( $_SERVER ['REMOTE_ADDR'] );
-	        
-	        $aIssuers = $oCardGate->methods ()->get ( cardgate\api\Method::IDEAL )->getIssuers ();
-	    } catch ( cardgate\api\Exception $oException_ ) {
-	        $aIssuers [0] = [
-	            'id' => 0,
-	            'name' => htmlspecialchars ( $oException_->getMessage () )
-	        ];
-	    }
 
-	    $sIssuers = serialize($aIssuers);
-	    $this->cache->set('cardgateissuers', $sIssuers);
+		try {
+
+			include 'cardgate-clientlib-php/init.php';
+
+			$oCardGate = new cardgate\api\Client ( ( int ) $this->config->get( 'payment_cardgate_merchant_id' ), $this->config->get( 'payment_cardgate_api_key' ), ( $this->config->get( 'payment_cardgate_test_mode' ) == 'test' ? true : false ) );
+			$oCardGate->setIp( $_SERVER ['REMOTE_ADDR'] );
+
+			$aIssuers = $oCardGate->methods()->get( cardgate\api\Method::IDEAL )->getIssuers();
+		} catch ( cardgate\api\Exception $oException_ ) {
+			$aIssuers [0] = [
+				'id'   => 0,
+				'name' => htmlspecialchars( $oException_->getMessage() )
+			];
+		}
+
+		$aBanks = array();
+
+		if ( is_array( $aIssuers ) ) {
+			foreach ( $aIssuers as $key => $aIssuer ) {
+				$aBanks[ $aIssuer['id'] ] = $aIssuer['name'];
+			}
+		}
+
+	    if (array_key_exists("INGBNL2A", $aBanks)) {
+		    $iCacheTime = 24 * 60 * 60;
+		    $iLifeTime = time() + $iCacheTime;
+		    $this->cache->set('cardgateissuerrefresh', $iLifeTime);
+
+		    $sIssuers = serialize( $aIssuers);
+		    $this->cache->set( 'cardgateissuers', $sIssuers);
+	    }
 	}
 }
