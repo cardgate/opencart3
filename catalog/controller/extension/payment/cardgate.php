@@ -17,7 +17,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class ControllerExtensionPaymentCardGate extends Controller {
-	var $version = '3.0.11';
+	var $version = '3.0.12';
 	
 	/**
 	 * Index action
@@ -74,6 +74,7 @@ class ControllerExtensionPaymentCardGate extends Controller {
 			// Configure customer.
 			$oConsumer = $oTransaction->getConsumer ();
 			$oConsumer->setEmail ( $order_info ['email'] );
+			$oConsumer->setPhone(($order_info['telephone']));
 			$oConsumer->address ()->setFirstName ( $order_info ['payment_firstname'] );
 			$oConsumer->address ()->setLastName ( $order_info ['payment_lastname'] );
 			if (! is_null ( $order_info ['payment_address_1'] )) {
