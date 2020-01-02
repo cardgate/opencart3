@@ -2,6 +2,7 @@
   "name": "cardgate/opencart3",
   "type": "library",
   "description": "CardGate payment processing module for OpenCart3",
+  "version": "3.0.12",
   "keywords": [
     "opencart",
     "payment",
