@@ -16,13 +16,12 @@ matrix:
   allow_failures:
     - php: 7.4snapshot
 
-## Cache composer
-cache:
-  directories:
-    - $HOME/.composer/cache
-
 install:
-  - composer install --prefer-dist --no-interaction
+  - travis_retry composer install --no-interaction --no-suggest
+  - composer show --installed
+
+before_script:
+  - travis_retry composer self-update
 
 script:
   - vendor/bin/phpcs --standard=PSR2 src
