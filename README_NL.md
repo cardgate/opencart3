@@ -2,13 +2,11 @@
 
 # CardGate extensie voor Opencart 3.x
 
-[![Total Downloads](https://img.shields.io/packagist/dt/cardgate/opencart3.svg)](https://packagist.org/packages/cardgate/opencart3)
-[![Latest Version](https://img.shields.io/packagist/v/cardgate/opencart3.svg)](https://github.com/cardgate/opencart3/releases)
 [![Build Status](https://travis-ci.org/cardgate/opencart3.svg?branch=master)](https://travis-ci.org/cardgate/opencart3)
 
 ## Support
 
-Deze extensie is geschikt voor OpenCart versie **3.x** .
+Deze extensie is geschikt voor OpenCart versie **3.x**
 
 ## Voorbereiding
 
