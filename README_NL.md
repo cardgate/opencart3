@@ -6,7 +6,7 @@
 
 ## Support
 
-Deze extensie is geschikt voor OpenCart versie **3.x** .
+Deze extensie is geschikt voor OpenCart versie **3.x**
 
 ## Voorbereiding
 
