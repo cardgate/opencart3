@@ -17,7 +17,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class ControllerExtensionPaymentCardGate extends Controller {
-	var $version = '3.0.13';
+	var $version = '3.0.14';
 	
 	/**
 	 * Index action
@@ -103,10 +103,10 @@ class ControllerExtensionPaymentCardGate extends Controller {
 			$oCart = $oTransaction->getCart ();
 			
 			foreach ( $this->cart->getProducts () as $product ) {
-				$price = round ( $this->tax->calculate ( $product ['price'], $product ['tax_class_id'], FALSE ) * 100, 0 );
-				$price_wt = round ( $this->tax->calculate ( $product ['price'], $product ['tax_class_id'], TRUE ) * 100, 0 );
+				$price = $this->convertAmount($this->tax->calculate ( $product ['price'], $product ['tax_class_id'], FALSE ), $order_info['currency_code']);
+				$price_wt = $this->convertAmount($this->tax->calculate ( $product ['price'], $product ['tax_class_id'], TRUE ), $order_info ['currency_code']);
 				$vat = $this->tax->getTax ( $price, $product ['tax_class_id'] );
-				$vat_perc = round ( $vat / $product ['price'], 2 );
+				$vat_perc = round ( $vat / $price, 2 );
 				$vat_per_item = round ( $price_wt - $price, 0 );
 				$oItem = $oCart->addItem ( \cardgate\api\Item::TYPE_PRODUCT, $product ['model'], $product ['name'], $product ['quantity'], $price_wt );
 				$oItem->setVat ( $vat_perc );
@@ -119,10 +119,10 @@ class ControllerExtensionPaymentCardGate extends Controller {
 			if ($this->cart->hasShipping () && ! empty ( $this->session->data ['shipping_method'] )) {
 				$shipping_data = $this->session->data ['shipping_method'];
 				if ($shipping_data ['cost'] > 0) {
-					$price = round ( $this->tax->calculate ( $shipping_data ['cost'], $shipping_data ['tax_class_id'], FALSE ) * 100 );
-					$price_wt = round ( $this->tax->calculate ( $shipping_data ['cost'], $shipping_data ['tax_class_id'], TRUE ) * 100 );
-					$vat = $this->tax->getTax ( $shipping_data ['cost'], $shipping_data ['tax_class_id'] );
-					$vat_perc = round ( $vat / $shipping_data ['cost'], 2 );
+					$price = $this->convertAmount( $this->tax->calculate ( $shipping_data ['cost'], $shipping_data ['tax_class_id'], FALSE ), $order_info ['currency_code']);
+					$price_wt = $this->convertAmount( $this->tax->calculate ( $shipping_data ['cost'], $shipping_data ['tax_class_id'], TRUE ), $order_info ['currency_code']);
+					$vat = $this->tax->getTax ( $price, $shipping_data ['tax_class_id'] );
+					$vat_perc = round ( $vat / $price, 2 );
 					$vat_per_item = round ( $price_wt - $price, 0 );
 					$shipping_tax = $vat_per_item;
 					$oItem = $oCart->addItem ( \cardgate\api\Item::TYPE_SHIPPING, $shipping_data ['code'], $shipping_data ['title'], 1, $price_wt );
@@ -179,7 +179,7 @@ class ControllerExtensionPaymentCardGate extends Controller {
 				$tax_total += $total;
 			}
 			
-			$tax_total = round ( $tax_total * 100, 0 );
+			$tax_total = $this->convertAmount($tax_total, $order_info['currency_code']);
 			$tax_total += $shipping_tax;
 			
 			$tax_difference = $tax_total - $vat_total;
@@ -193,7 +193,7 @@ class ControllerExtensionPaymentCardGate extends Controller {
 				$oItem->setVatIncluded ( 1 );
 			}
 			$item_difference = $amount - $cart_item_total - $vat_total - $tax_difference;
-			
+
 			if ($item_difference != 0) {
 				$item = array ();
 				$price = $item_difference;
@@ -398,5 +398,8 @@ class ControllerExtensionPaymentCardGate extends Controller {
 		    $sIssuers = serialize( $aIssuers);
 		    $this->cache->set( 'cardgateissuers', $sIssuers);
 	    }
+	}
+	private function convertAmount($amount, $currency_code){
+		return round($this->currency->format ( $amount, $currency_code, false, false ) * 100, 0 );
 	}
 }
