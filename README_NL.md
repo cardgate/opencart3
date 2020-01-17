@@ -12,13 +12,13 @@ Deze extensie is geschikt voor OpenCart versie **3.x**
 
 Voor het gebruik van deze module zijn CardGate RESTful gegevens nodig.  
 Bezoek hiervoor [Mijn CardGate](https://my.cardgate.com/) en haal daar je  gegevens op,  
-of neem contact op met je accountmanager.  
+of neem contact op met je accountmanager.
 
 ## Installatie
 
 1. Download en unzip de meest recente [source code](https://github.com/cardgate/opencart3/releases/) op je bureaublad.
 
-2. Upload de **inhoud** van de zipfile naar de **gelijknamige mappen** op je webshop.
+2. Upload de **admin, catalog en image mappen** van de zipfile naar de **gelijknamige mappen** op je webshop.
 
 ## Configuratie
 
