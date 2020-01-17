@@ -247,7 +247,6 @@ catalog/view/theme/default/template/extension/payment/*
 !catalog/view/theme/default/template/extension/payment/cardgatebillink.twig
 !catalog/view/theme/default/template/extension/payment/cardgatebitcoin.twig
 !catalog/view/theme/default/template/extension/payment/cardgatecreditcard.twig
-!catalog/view/theme/default/template/extension/payment/cardgatecreditcard.twig
 !catalog/view/theme/default/template/extension/payment/cardgatedirectdebit.twig
 !catalog/view/theme/default/template/extension/payment/cardgategiftcard.twig
 !catalog/view/theme/default/template/extension/payment/cardgategiropay.twig
