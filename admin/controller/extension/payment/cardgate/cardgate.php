@@ -26,7 +26,7 @@ class ControllerExtensionPaymentCardGatePlusGeneric extends Controller {
     public function _index( $payment ) {
 
         //update version also in catalog/controller/payment/cardgate/cardgate.php
-        $version = '3.0.13';
+        $version = '3.0.16';
          
         $this->load->language( 'extension/payment/' . $payment );
         $this->document->setTitle( $this->language->get( 'heading_title' ) );
