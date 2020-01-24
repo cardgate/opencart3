@@ -34,25 +34,18 @@ class ModelExtensionPaymentCardGateAfterpay extends Model {
             $status = false;
         }
 
-        $title = "";
-        
-        if ($this->config->get('payment_cardgate_use_logo') == 1){
-            $title = '<img style="height:100%; width:100%; max-height: 30px; max-width: 60px;" src="image/payment/cgp/afterpay.svg" /> ';
-        }
-        
-        if ($this->config->get('payment_cardgate_use_title') == 1){
-            $title .= $this->language->get( 'text_title' ).' ';
-        }
-        
-        if ($this->config->get('payment_cardgateafterpay_custom_payment_method_text')){
-            $title .= $this->config->get('payment_cardgateafterpay_custom_payment_method_text').' ';
-        }
-       
-        trim($title); 
-        
-        if ($title == ''){
-            $title = $this->language->get( 'text_title' );
-        }
+	    if ($this->config->get('payment_cardgate_use_logo') == 1) {
+		    $payment_logo = '<img style="max-height: 30px; max-width: 40px;"  src="image/payment/cgp/afterpay.svg">&nbsp&nbsp';
+	    } else {
+		    $payment_logo = '';
+	    }
+	    if ($this->config->get('payment_cardgateafterpay_custom_payment_method_text')){
+		    $payment_text = trim($this->config->get('payment_cardgateafterpay_custom_payment_method_text'));
+	    } else {
+		    $payment_text = trim($this->language->get( 'text_title' ));
+	    }
+
+	    $title = '<div style="width:600px;">'.$payment_logo.$payment_text.'</div>';
 
         $method_data = array();
         if ( $status ) {
