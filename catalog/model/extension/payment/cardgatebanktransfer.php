@@ -45,7 +45,7 @@ class ModelExtensionPaymentCardGateBanktransfer extends Model {
 		    $payment_text = trim($this->language->get( 'text_title' ));
 	    }
 
-	    $title = '<div style="width:600px;">'.$payment_logo.$payment_text.'</div>';
+	    $title = '<div style="width:200px;">'.$payment_logo.$payment_text.'</div>';
 
 	    $method_data = array();
         if ( $status ) {
