@@ -15,7 +15,7 @@ Please visit [My CardGate](https://my.cardgate.com/) and retrieve your credentia
 
 ## Installation
 
-1. Download and unzip the most recent [source code](https://github.com/cardgate/opencart3/releases/) file on your desktop.
+1. Download and unzip the most recent [cardgate.zip](https://github.com/cardgate/opencart3/releases/) file on your desktop.
 
 2. Upload the **admin, catalog and image folders** of the zip file to the folders **with the same name** on your webshop.
 
@@ -41,7 +41,7 @@ Please visit [My CardGate](https://my.cardgate.com/) and retrieve your credentia
 
 10. Click the **Edit** button of this payment method and set the **Plugin status** to **Active**.
 
-11. Repeat **steps 9 through 10** for each **payment method** you wish to **activate**.
+11. Repeat **steps 9 and 10** for each **payment method** you wish to **activate**.
 
 12. Go to [My CardGate](https://my.cardgate.com/), choose **Sites** and select the appropriate site.
 

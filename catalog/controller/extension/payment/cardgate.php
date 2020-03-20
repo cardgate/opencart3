@@ -31,7 +31,7 @@ class ControllerExtensionPaymentCardGate extends Controller {
 		$data ['text_ideal_bank_selection'] = $this->language->get ( 'text_ideal_bank_selection' );
 		$data ['text_ideal_bank_alert'] = $this->language->get ( 'text_ideal_bank_alert' );
 		$data ['text_ideal_bank_options'] = $this->getBankOptions ();
-		
+
 		return $this->load->view ( 'extension/payment/' . $payment, $data );
 	}
 	
