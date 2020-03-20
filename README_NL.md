@@ -16,7 +16,7 @@ of neem contact op met je accountmanager.
 
 ## Installatie
 
-1. Download en unzip de meest recente [source code](https://github.com/cardgate/opencart3/releases/) op je bureaublad.
+1. Download en unzip het meest recente [cardgate.zip](https://github.com/cardgate/opencart3/releases/) bestand op je bureaublad.
 
 2. Upload de **admin, catalog en image mappen** van de zipfile naar de **gelijknamige mappen** op je webshop.
 
