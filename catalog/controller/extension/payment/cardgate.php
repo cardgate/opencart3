@@ -31,7 +31,6 @@ class ControllerExtensionPaymentCardGate extends Controller {
 		$data ['text_ideal_bank_selection'] = $this->language->get ( 'text_ideal_bank_selection' );
 		$data ['text_ideal_bank_alert'] = $this->language->get ( 'text_ideal_bank_alert' );
 		$data ['text_ideal_bank_options'] = $this->getBankOptions ();
-		$data ['text_logo_url'] = $this->getLogoUrl($payment);
 
 		return $this->load->view ( 'extension/payment/' . $payment, $data );
 	}
@@ -402,16 +401,5 @@ class ControllerExtensionPaymentCardGate extends Controller {
 	}
 	private function convertAmount($amount, $currency_code){
 		return round($this->currency->format ( $amount, $currency_code, false, false ) * 100, 0 );
-	}
-
-	private function getLogoUrl($payment){
-		$payment = substr($payment,8);
-		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
-			$url = $this->config->get('config_ssl');
-		} else {
-			$url = $this->config->get('config_url');
-		}
-		$url .= 'image/payment/cgp/'.$payment.'.svg';
-		return $url;
 	}
 }
