@@ -34,18 +34,18 @@ class ModelExtensionPaymentCardGateGiropay extends Model {
             $status = false;
         }
 
+        if ($this->config->get('payment_cardgategiropay_custom_payment_method_text')){
+            $payment_text = trim($this->config->get('payment_cardgategiropay_custom_payment_method_text'));
+        } else {
+            $payment_text = trim($this->language->get( 'text_title' ));
+        }
+
 	    if ($this->config->get('payment_cardgate_use_logo') == 1) {
 		    $payment_logo = '<img style="max-height: 30px; max-width: 40px;" src="image/payment/cgp/giropay.svg">&nbsp&nbsp';
+            $title = '<div style="width:200px;">'.$payment_logo.$payment_text.'</div>';
 	    } else {
-		    $payment_logo = '';
+            $title = $payment_text;
 	    }
-	    if ($this->config->get('payment_cardgategiropay_custom_payment_method_text')){
-		    $payment_text = trim($this->config->get('payment_cardgategiropay_custom_payment_method_text'));
-	    } else {
-		    $payment_text = trim($this->language->get( 'text_title' ));
-	    }
-
-	    $title = '<div style="width:200px;">'.$payment_logo.$payment_text.'</div>';
 
         $method_data = array();
         if ( $status ) {
