@@ -34,23 +34,24 @@ class ModelExtensionPaymentCardGateIdealqr extends Model {
             $status = false;
         }
 
-	    if ($this->config->get('payment_cardgate_use_logo') == 1) {
-		    $payment_logo = '<img style="max-height: 30px; max-width: 40px;" src="image/payment/cgp/idealqr.svg">&nbsp&nbsp';
-	    } else {
-		    $payment_logo = '';
-	    }
-	    if ($this->config->get('payment_cardgateidealqr_custom_payment_method_text')){
-		    $payment_text = trim($this->config->get('payment_cardgateidealqr_custom_payment_method_text'));
-	    } else {
-		    $payment_text = trim($this->language->get( 'text_title' ));
-	    }
+        if ($this->config->get('payment_cardgateidealqr_custom_payment_method_text')){
+            $payment_text = trim($this->config->get('payment_cardgateidealqr_custom_payment_method_text'));
+        } else {
+            $payment_text = trim($this->language->get( 'text_title' ));
+        }
 
-	    $title = '<div style="width:200px;">'.$payment_logo.$payment_text.'</div>';
+        if ($this->config->get('payment_cardgate_use_logo') == 1) {
+            $payment_logo = '<img style="max-height: 30px; max-width: 40px;" src="image/payment/cgp/idealqr.svg">&nbsp&nbsp';
+            $title = $payment_logo.$payment_text;$title = '<div style="width:200px;">'.$payment_logo.$payment_text.'</div>';
+        } else {
+            $title = $payment_text;
+        }
+
         $method_data = array();
         if ( $status ) {
             
             $method_data = array(
-                'code' => 'cardgateidealqrqr',
+                'code' => 'cardgateidealqr',
                 'title' => $title,
                 'terms' => '',
                 'sort_order' => $this->config->get( 'payment_cardgateidealqr_sort_order' )
