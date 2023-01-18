@@ -17,13 +17,8 @@
  */
 
 // Text
+include_once 'cardgate.php';
 $_['text_title']                = 'iDEAL';
-$_['text_redirect_message']     = 'U zult worden doorgestuurd naar CardGate, onze Payment Service Provider';
-$_['text_payment_initialized']  = 'Transactie gestart, wacht op bevestiging.';
-$_['text_payment_complete']     = 'Betaling succesvol.';
-$_['text_payment_failed']       = 'Betaling mislukt of geannuleerd.';
-$_['text_select_payment_method']= 'Selecteer de gewenste betaalmethode:';
-$_['text_transaction_nr']       = 'Transactie nr:';
 
 $_['text_ideal_bank_selection']    = 'Selecteer uw bank:';
 $_['text_ideal_bank_please']       = '--Maak uw keuze--';

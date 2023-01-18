@@ -17,10 +17,5 @@
  */
 
 // Text
+include_once 'cardgate.php';
 $_['text_title']                    = 'Gift Card';
-$_['text_redirect_message']         = 'You will be shortly redirected to CardGate to finish your payment.';
-$_['text_payment_initialized']      = 'Transaction started, waiting for payment.';
-$_['text_payment_complete']         = 'Payment complete.';
-$_['text_payment_failed']           = 'Payment failed or canceled by user.';
-$_['text_select_payment_method']    = 'Select payment method:';
-$_['text_transaction_nr']           = 'Transaction nr:';

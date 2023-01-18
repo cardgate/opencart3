@@ -17,15 +17,10 @@
  */
 
 // Text
+include_once 'cardgate.php';
 $_['text_title']                    = 'iDEAL';
-$_['text_redirect_message']         = 'You will be shortly redirected to CardGate to finish your payment.';
-$_['text_payment_initialized']      = 'Transaction started, waiting for payment.';
-$_['text_payment_complete']         = 'Payment complete.';
-$_['text_payment_failed']           = 'Payment failed or canceled by user.';
-$_['text_select_payment_method']    = 'Select payment method:';
-$_['text_transaction_nr']           = 'Transaction nr:';
 
 $_['text_ideal_bank_selection']    = 'Select your bank:';
 $_['text_ideal_bank_please']       = '--Please select--';
 $_['text_ideal_bank_additional']   = '------ Additional Banks ------';
-$_['text_ideal_bank_alert']        = 'Select your bank';
+$_['text_ideal_bank_alert']        = 'Please select your bank';
