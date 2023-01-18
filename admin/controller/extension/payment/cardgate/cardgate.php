@@ -26,7 +26,7 @@ class ControllerExtensionPaymentCardGatePlusGeneric extends Controller {
     public function _index( $payment ) {
 
         //update version also in catalog/controller/payment/cardgate/cardgate.php
-        $version = '3.0.19';
+        $version = '3.0.20';
          
         $this->load->language( 'extension/payment/' . $payment );
         $this->document->setTitle( $this->language->get( 'heading_title' ) );
@@ -73,7 +73,6 @@ class ControllerExtensionPaymentCardGatePlusGeneric extends Controller {
         $data['text_merchant_id'] = $this->language->get( 'text_merchant_id' );
         $data['text_api_key'] = $this->language->get( 'text_api_key' );
         $data['text_gateway_language'] = $this->language->get( 'text_gateway_language' );
-        $data['text_order_description'] = $this->language->get( 'text_order_description' );
         $data['text_use_logo'] = $this->language->get( 'text_use_logo' );
         $data['text_use_title'] = $this->language->get( 'text_use_title' );
         $data['text_custom_payment_method_text'] = $this->language->get('text_custom_payment_method_text');
@@ -95,7 +94,6 @@ class ControllerExtensionPaymentCardGatePlusGeneric extends Controller {
         $data['entry_custom_payment_method_text'] = $this->language->get('entry_custom_payment_method_text');
         $data['entry_total'] = $this->language->get( 'entry_total' );
         $data['entry_geo_zone'] = $this->language->get( 'entry_geo_zone' );
-        $data['entry_order_description'] = $this->language->get( 'entry_order_description' );
         $data['entry_use_logo'] = $this->language->get( 'entry_use_logo' );
         $data['entry_use_title'] = $this->language->get( 'entry_use_title' );
         $data['entry_payment_initialized_status'] = $this->language->get( 'entry_payment_initialized_status' );
@@ -191,12 +189,6 @@ class ControllerExtensionPaymentCardGatePlusGeneric extends Controller {
             $data['payment_'.$payment . '_test_mode'] = $this->config->get( 'payment_'.$payment . '_test_mode' );
         }
 
-        if ( isset( $this->request->post['payment_'.$payment . '_order_description'] ) ) {
-            $data['payment_'.$payment . '_order_description'] = $this->request->post['payment_'.$payment . '_order_description'];
-        } else {
-            $data['payment_'.$payment . '_order_description'] = $this->config->get( 'payment_'.$payment . '_order_description' );
-        }
-        
         if ( isset( $this->request->post['payment_'.$payment . '_use_logo'] ) ) {
             $data['payment_'.$payment . '_use_logo'] = $this->request->post['payment_'.$payment . '_use_logo'];
         } else {

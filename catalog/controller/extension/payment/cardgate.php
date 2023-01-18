@@ -17,7 +17,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class ControllerExtensionPaymentCardGate extends Controller {
-	var $version = '3.0.19';
+	var $version = '3.0.20';
 	
 	/**
 	 * Index action
@@ -203,11 +203,11 @@ class ControllerExtensionPaymentCardGate extends Controller {
 				$oItem->setVatIncluded ( 1 );
 			}
 			
-			$oTransaction->setCallbackUrl ( $this->url->link ( 'extension/payment/cardgategeneric/control' ) );
+			$oTransaction->setCallbackUrl ( $this->url->link ( 'extension/payment/cardgategeneric/callback' ) );
 			$oTransaction->setSuccessUrl ( $this->url->link ( 'extension/payment/' . $payment . '/success' ) );
 			$oTransaction->setFailureUrl ( $this->url->link ( 'extension/payment/' . $payment . '/cancel' ) );
 			$oTransaction->setReference ( $order_info ['order_id'] );
-			$oTransaction->setDescription ( str_replace ( '%id%', $order_info ['order_id'], $this->config->get ( 'payment_cardgate_order_description' ) ) );
+            $oTransaction->setDescription( 'Order ' . $order_info ['order_id'] );
 			$oTransaction->register ();
 			
 			$sActionUrl = $oTransaction->getActionUrl ();
@@ -231,23 +231,28 @@ class ControllerExtensionPaymentCardGate extends Controller {
 	 * After a failed transaction a customer will be send here
 	 */
 	public function cancel() {
-		// Load the cart
-		$this->response->redirect ( $this->url->link ( 'checkout/cart' ) );
+        $this->load->model( 'checkout/order' );
+        $data = $_REQUEST;
+        if ($data['code'] == 309){
+            //canceled
+            $this->response->redirect ( $this->url->link('checkout/checkout', 'language=' . $this->config->get('config_language'), true) );
+        } else {
+            //failed
+            $this->response->redirect( $this->url->link( 'checkout/failure', 'language=' . $this->config->get( 'config_language' ), true ) );
+        }
 	}
 	
 	/**
 	 * After a successful transaction a customer will be send here
 	 */
 	public function success() {
-		// Clear the cart
-		$this->cart->clear ();
-		$this->response->redirect ( $this->url->link ( 'checkout/success' ) );
+        $this->response->redirect( $this->url->link( 'checkout/success', 'language=' . $this->config->get( 'config_language' ), true ) );
 	}
 	
 	/**
 	 * Control URL called by gateway
 	 */
-	public function control() {
+	public function callback() {
 		$data = $_REQUEST;
 		try {
 			
@@ -280,24 +285,11 @@ class ControllerExtensionPaymentCardGate extends Controller {
 				$order = $this->model_checkout_order->getOrder ( $data ['reference'] );
 				$complete_status = $this->config->get ( 'payment_cardgate_payment_complete_status' );
 				$comment = '';
-				
-				$waiting = false;
-				if ($data ['code'] == '0' || ($data ['code'] >= '700' && $data ['code'] <= '710')) {
-					$waiting = true;
-					$status = $this->config->get ( 'payment_cardgate_payment_initialized_status' );
-					$this->language->get ( 'text_payment_initialized' );
-					switch ($data ['code']) {
-						case '700' :
-							$comment .= 'Transaction is waiting for user action. ';
-							break;
-						case '701' :
-							$comment .= 'Waiting for confirmation. ';
-							break;
-						case '710' :
-							$comment .= 'Waiting for confirmation recurring. ';
-							break;
-					}
-				}
+
+                if ($data['code'] == 0){
+                    $status = $this->config->get ( 'payment_cardgate_payment_initialized_status' );
+                    $this->language->get ( 'text_payment_initialized' );
+                }
 				
 				if ($data ['code'] >= '200' && $data ['code'] < '300') {
 					$status = $complete_status;
@@ -312,16 +304,25 @@ class ControllerExtensionPaymentCardGate extends Controller {
 						$comment .= $this->language->get ( 'text_payment_failed' );
 					}
 				}
+
+                if ($data ['code'] >= '700' && $data ['code'] < '800') {
+                    $status = $this->config->get ( 'payment_cardgate_payment_initialized_status' );
+                    $comment .= $this->language->get ( 'text_payment_pending' );
+                }
 				
-				$comment .= '  ' . $this->language->get ( 'text_transaction_nr' );
+				$comment .= ' ' . $this->language->get ( 'text_transaction_nr' );
 				$comment .= ' ' . $data ['transaction'];
-				
-				if (($order ['order_status_id'] != $status && $order ['order_status_id'] != $complete_status) || ($waiting = true && $order ['order_status_id'] != $complete_status)) {
-					$this->model_checkout_order->addOrderHistory ( $order ['order_id'], $status, $comment, true );
-				}
-				
-				// Display transaction_id and status
-				echo $data ['transaction'] . '.' . $data ['code'];
+
+                if ($order ['order_status_id'] != $complete_status) {
+                    $this->model_checkout_order->addOrderHistory ( $order ['order_id'], $status, $comment, true );
+                    if ($order ['order_status_id'] == $complete_status) {
+                        $this->removeCart( $data['session_id'] );
+                    }
+                    echo $data ['transaction'] . '.' . $data ['code'];
+                } else {
+                    echo 'Order already completed.';
+
+                }
 			}
 		} catch ( cardgate\api\Exception $oException_ ) {
 			echo htmlspecialchars ( $oException_->getMessage () );
