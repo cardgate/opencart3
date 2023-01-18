@@ -287,7 +287,8 @@ class ControllerExtensionPaymentCardGate extends Controller {
 				$comment = '';
 
                 if ($data['code'] == 0){
-                    $status = $this->getOrderStatus('Pending');
+                    $status = $this->config->get ( 'payment_cardgate_payment_initialized_status' );
+                    $this->language->get ( 'text_payment_initialized' );
                 }
 				
 				if ($data ['code'] >= '200' && $data ['code'] < '300') {
@@ -305,7 +306,7 @@ class ControllerExtensionPaymentCardGate extends Controller {
 				}
 
                 if ($data ['code'] >= '700' && $data ['code'] < '800') {
-                    $status = $this->getOrderStatus('Pending');
+                    $status = $this->config->get ( 'payment_cardgate_payment_initialized_status' );
                     $comment .= $this->language->get ( 'text_payment_pending' );
                 }
 				
@@ -313,7 +314,7 @@ class ControllerExtensionPaymentCardGate extends Controller {
 				$comment .= ' ' . $data ['transaction'];
 
                 if ($order ['order_status_id'] != $complete_status) {
-                    $this->model_checkout_order->addHistory ( $order ['order_id'], $status, $comment, true );
+                    $this->model_checkout_order->addOrderHistory ( $order ['order_id'], $status, $comment, true );
                     if ($order ['order_status_id'] == $complete_status) {
                         $this->removeCart( $data['session_id'] );
                     }
