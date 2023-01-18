@@ -207,7 +207,7 @@ class ControllerExtensionPaymentCardGate extends Controller {
 			$oTransaction->setSuccessUrl ( $this->url->link ( 'extension/payment/' . $payment . '/success' ) );
 			$oTransaction->setFailureUrl ( $this->url->link ( 'extension/payment/' . $payment . '/cancel' ) );
 			$oTransaction->setReference ( $order_info ['order_id'] );
-			$oTransaction->setDescription ( str_replace ( '%id%', $order_info ['order_id'], $this->config->get ( 'payment_cardgate_order_description' ) ) );
+            $oTransaction->setDescription( 'Order ' . $order_info ['order_id'] );
 			$oTransaction->register ();
 			
 			$sActionUrl = $oTransaction->getActionUrl ();
