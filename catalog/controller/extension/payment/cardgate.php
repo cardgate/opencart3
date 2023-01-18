@@ -246,9 +246,7 @@ class ControllerExtensionPaymentCardGate extends Controller {
 	 * After a successful transaction a customer will be send here
 	 */
 	public function success() {
-		// Clear the cart
-		$this->cart->clear ();
-		$this->response->redirect ( $this->url->link ( 'checkout/success' ) );
+        $this->response->redirect( $this->url->link( 'checkout/success', 'language=' . $this->config->get( 'config_language' ), true ) );
 	}
 	
 	/**
