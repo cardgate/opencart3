@@ -231,8 +231,15 @@ class ControllerExtensionPaymentCardGate extends Controller {
 	 * After a failed transaction a customer will be send here
 	 */
 	public function cancel() {
-		// Load the cart
-		$this->response->redirect ( $this->url->link ( 'checkout/cart' ) );
+        $this->load->model( 'checkout/order' );
+        $data = $_REQUEST;
+        if ($data['code'] == 309){
+            //canceled
+            $this->response->redirect ( $this->url->link('checkout/checkout', 'language=' . $this->config->get('config_language'), true) );
+        } else {
+            //failed
+            $this->response->redirect( $this->url->link( 'checkout/failure', 'language=' . $this->config->get( 'config_language' ), true ) );
+        }
 	}
 	
 	/**
