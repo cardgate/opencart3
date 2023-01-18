@@ -203,7 +203,7 @@ class ControllerExtensionPaymentCardGate extends Controller {
 				$oItem->setVatIncluded ( 1 );
 			}
 			
-			$oTransaction->setCallbackUrl ( $this->url->link ( 'extension/payment/cardgategeneric/control' ) );
+			$oTransaction->setCallbackUrl ( $this->url->link ( 'extension/payment/cardgategeneric/callback' ) );
 			$oTransaction->setSuccessUrl ( $this->url->link ( 'extension/payment/' . $payment . '/success' ) );
 			$oTransaction->setFailureUrl ( $this->url->link ( 'extension/payment/' . $payment . '/cancel' ) );
 			$oTransaction->setReference ( $order_info ['order_id'] );
@@ -254,7 +254,7 @@ class ControllerExtensionPaymentCardGate extends Controller {
 	/**
 	 * Control URL called by gateway
 	 */
-	public function control() {
+	public function callback() {
 		$data = $_REQUEST;
 		try {
 			
