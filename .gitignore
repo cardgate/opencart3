@@ -22,7 +22,6 @@ admin/controller/extension/payment/*
 !admin/controller/extension/payment/cardgatecreditcard.php
 !admin/controller/extension/payment/cardgatedirectdebit.php
 !admin/controller/extension/payment/cardgategiftcard.php
-!admin/controller/extension/payment/cardgategiropay.php
 !admin/controller/extension/payment/cardgateidealqr.php
 !admin/controller/extension/payment/cardgateideal.php
 !admin/controller/extension/payment/cardgateklarna.php
@@ -49,7 +48,6 @@ admin/language/en-gb/extension/payment/*
 !admin/language/en-gb/extension/payment/cardgatecreditcard.php
 !admin/language/en-gb/extension/payment/cardgatedirectdebit.php
 !admin/language/en-gb/extension/payment/cardgategiftcard.php
-!admin/language/en-gb/extension/payment/cardgategiropay.php
 !admin/language/en-gb/extension/payment/cardgateidealqr.php
 !admin/language/en-gb/extension/payment/cardgateideal.php
 !admin/language/en-gb/extension/payment/cardgateklarna.php
@@ -77,7 +75,6 @@ admin/language/nl-nl/extension/payment/*
 !admin/language/nl-nl/extension/payment/cardgatecreditcard.php
 !admin/language/nl-nl/extension/payment/cardgatedirectdebit.php
 !admin/language/nl-nl/extension/payment/cardgategiftcard.php
-!admin/language/nl-nl/extension/payment/cardgategiropay.php
 !admin/language/nl-nl/extension/payment/cardgateidealqr.php
 !admin/language/nl-nl/extension/payment/cardgateideal.php
 !admin/language/nl-nl/extension/payment/cardgateklarna.php
@@ -109,7 +106,6 @@ admin/view/template/extension/payment/*
 !admin/view/template/extension/payment/cardgatecreditcard.twig
 !admin/view/template/extension/payment/cardgatedirectdebit.twig
 !admin/view/template/extension/payment/cardgategiftcard.twig
-!admin/view/template/extension/payment/cardgategiropay.twig
 !admin/view/template/extension/payment/cardgateidealqr.twig
 !admin/view/template/extension/payment/cardgateideal.twig
 !admin/view/template/extension/payment/cardgateklarna.twig
@@ -138,7 +134,6 @@ catalog/controller/extension/payment/*
 !catalog/controller/extension/payment/cardgatedirectdebit.php
 !catalog/controller/extension/payment/cardgategeneric.php
 !catalog/controller/extension/payment/cardgategiftcard.php
-!catalog/controller/extension/payment/cardgategiropay.php
 !catalog/controller/extension/payment/cardgateidealqr.php
 !catalog/controller/extension/payment/cardgateideal.php
 !catalog/controller/extension/payment/cardgateklarna.php
@@ -166,7 +161,6 @@ catalog/language/en-gb/extension/payment/*
 !catalog/language/en-gb/extension/payment/cardgatecreditcard.php
 !catalog/language/en-gb/extension/payment/cardgatedirectdebit.php
 !catalog/language/en-gb/extension/payment/cardgategiftcard.php
-!catalog/language/en-gb/extension/payment/cardgategiropay.php
 !catalog/language/en-gb/extension/payment/cardgateidealqr.php
 !catalog/language/en-gb/extension/payment/cardgateideal.php
 !catalog/language/en-gb/extension/payment/cardgateklarna.php
@@ -191,7 +185,6 @@ catalog/language/nl-nl/extension/payment/*
 !catalog/language/nl-nl/extension/payment/cardgatecreditcard.php
 !catalog/language/nl-nl/extension/payment/cardgatedirectdebit.php
 !catalog/language/nl-nl/extension/payment/cardgategiftcard.php
-!catalog/language/nl-nl/extension/payment/cardgategiropay.php
 !catalog/language/nl-nl/extension/payment/cardgateidealqr.php
 !catalog/language/nl-nl/extension/payment/cardgateideal.php
 !catalog/language/nl-nl/extension/payment/cardgateklarna.php
@@ -216,7 +209,6 @@ catalog/model/extension/payment/*
 !catalog/model/extension/payment/cardgatecreditcard.php
 !catalog/model/extension/payment/cardgatedirectdebit.php
 !catalog/model/extension/payment/cardgategiftcard.php
-!catalog/model/extension/payment/cardgategiropay.php
 !catalog/model/extension/payment/cardgateidealqr.php
 !catalog/model/extension/payment/cardgateideal.php
 !catalog/model/extension/payment/cardgateklarna.php
@@ -249,7 +241,6 @@ catalog/view/theme/default/template/extension/payment/*
 !catalog/view/theme/default/template/extension/payment/cardgatecreditcard.twig
 !catalog/view/theme/default/template/extension/payment/cardgatedirectdebit.twig
 !catalog/view/theme/default/template/extension/payment/cardgategiftcard.twig
-!catalog/view/theme/default/template/extension/payment/cardgategiropay.twig
 !catalog/view/theme/default/template/extension/payment/cardgateidealqr.twig
 !catalog/view/theme/default/template/extension/payment/cardgateideal.twig
 !catalog/view/theme/default/template/extension/payment/cardgateklarna.twig
