@@ -14,7 +14,7 @@
  function redirectClient(response) {
         $.ajax({
             type: 'GET',
-            url: 'index.php?route=extension/payment/cardgategiropay/confirm',
+            url: 'index.php?route=extension/payment/cardgategiftcard/confirm',
             beforeSend: function () {
                 $('form#cardgate_checkout').hide();
                 $('form#cardgate_checkout').before('<div class="attention"><img src="catalog/view/theme/default/image/loading.gif" alt="" />{{ redirect_message }}</div>');
