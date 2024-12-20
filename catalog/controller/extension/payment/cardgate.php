@@ -17,7 +17,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class ControllerExtensionPaymentCardGate extends Controller {
-	var $version = '3.0.21';
+	var $version = '3.0.22';
 	
 	/**
 	 * Index action
@@ -31,7 +31,14 @@ class ControllerExtensionPaymentCardGate extends Controller {
 		$data ['text_ideal_bank_selection'] = $this->language->get ( 'text_ideal_bank_selection' );
 		$data ['text_ideal_bank_alert'] = $this->language->get ( 'text_ideal_bank_alert' );
 		$data ['text_ideal_bank_options'] = $this->getBankOptions ();
-		
+
+        if ( $payment == 'cardgateideal' ) {
+            $data['entry_show_issuers'] = $this->language->get( 'entry_show_issuers' );
+            $data['entry_show_issuers_explain'] = $this->language->get( 'entry_show_issuers_explain' );
+            $data ['show_issuers'] = boolval( $this->config->get( 'payment_cardgateideal_show_issuers' ) );
+        }
+
+
 		return $this->load->view ( 'extension/payment/' . $payment, $data );
 	}
 	
