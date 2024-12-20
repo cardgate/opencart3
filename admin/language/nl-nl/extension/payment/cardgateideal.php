@@ -61,6 +61,8 @@ $_['entry_order_description'] = 'Omschrijving Bestelling:';
 $_['entry_custom_payment_method_text'] = 'Custom betaalmethode text:'; 
 $_['entry_total']             = 'Totaal:';
 $_['entry_geo_zone']          = 'Geo Zone:';
+$_['entry_show_issuers']                = 'Toon issuers (banken)';
+$_['entry_show_issuers_explain']        = 'iDEAL v2 laat standaard geen issuers (banken) meer zien (Verplicht door iDEAL).';
 
 $_['entry_payment_initialized_status'] = 'Betaling Geinitieerd status:';
 $_['entry_payment_complete_status']    = 'Betaling Succesvol status:';
