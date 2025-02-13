@@ -17,7 +17,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class ControllerExtensionPaymentCardGate extends Controller {
-	var $version = '3.0.22';
+	var $version = '3.0.23';
 	
 	/**
 	 * Index action
@@ -75,7 +75,10 @@ class ControllerExtensionPaymentCardGate extends Controller {
 			// Configure payment option.
 			$oTransaction->setPaymentMethod ( $oCardGate->methods ()->get ( $option ) );
 			if ('ideal' == $option) {
-				$oTransaction->setIssuer ( $_GET ['issuer_id'] );
+                $iShowIssuers = $this->config->get ( 'payment_cardgateideal_show_issuers' );
+                if ($iShowIssuers == 1) {
+                    $oTransaction->setIssuer( $_GET ['issuer_id'] );
+                }
 			}
 			
 			// Configure customer.
