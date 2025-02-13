@@ -60,6 +60,8 @@ $_['entry_order_description'] = 'Order Description:';
 $_['entry_total']             = 'Total:';
 $_['entry_custom_payment_method_text'] = 'Custom payment method text:';
 $_['entry_geo_zone']          = 'Geo Zone:';
+$_['entry_show_issuers']                = 'Show issuers';
+$_['entry_show_issuers_explain']        = 'iDEAL v2 will not show issuers any more by default (Mandatory by iDEAL).';
 
 $_['entry_payment_initialized_status'] = 'Payment in progress status:';
 $_['entry_payment_complete_status']    = 'Payment complete status:';

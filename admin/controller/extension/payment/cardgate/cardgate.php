@@ -26,7 +26,7 @@ class ControllerExtensionPaymentCardGatePlusGeneric extends Controller {
     public function _index( $payment ) {
 
         //update version also in catalog/controller/payment/cardgate/cardgate.php
-        $version = '3.0.21';
+        $version = '3.0.22';
          
         $this->load->language( 'extension/payment/' . $payment );
         $this->document->setTitle( $this->language->get( 'heading_title' ) );
@@ -109,6 +109,10 @@ class ControllerExtensionPaymentCardGatePlusGeneric extends Controller {
         $data['button_cancel'] = $this->language->get( 'button_cancel' );
         $data['tab_general'] = $this->language->get( 'tab_general' );
 
+        if ( $payment == 'cardgateideal' ) {
+            $data['entry_show_issuers'] = $this->language->get( 'entry_show_issuers' );
+            $data['entry_show_issuers_explain'] = $this->language->get( 'entry_show_issuers_explain' );
+        }
         if ( isset( $this->error['warning'] ) ) {
             $data['error_warning'] = $this->error['warning'];
         } else {
@@ -248,6 +252,12 @@ class ControllerExtensionPaymentCardGatePlusGeneric extends Controller {
 
         $this->load->model( 'localisation/geo_zone' );
         $data['geo_zones'] = $this->model_localisation_geo_zone->getGeoZones();
+
+        if ( isset( $this->request->post['payment_'.$payment . '_show_issuers'] ) ) {
+            $data['payment_'.$payment . '_show_issuers'] = $this->request->post['payment_'.$payment . '_show_issuers'];
+        } else {
+            $data['payment_'.$payment . '_show_issuers'] = $this->config->get( 'payment_'.$payment . '_show_issuers' );
+        }
 
         if ( isset( $this->request->post['payment_'.$payment . '_status'] ) ) {
             $data['payment_'.$payment . '_status'] = $this->request->post['payment_'.$payment . '_status'];
