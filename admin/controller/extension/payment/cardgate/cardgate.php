@@ -36,7 +36,6 @@ class ControllerExtensionPaymentCardGatePlusGeneric extends Controller {
         $site_url = HTTPS_CATALOG;
 
         if ( ($this->request->server['REQUEST_METHOD'] == 'POST') && ($this->validate()) ) {
-            $this->cache->set('cardgateissuerrefresh', 0);
             $this->request->post['payment_cardgate_use_logo'] = (isset($this->request->post['payment_cardgate_use_logo']) ? 1 : 0);
             $this->request->post['payment_cardgate_use_title'] = (isset($this->request->post['payment_cardgate_use_title']) ? 1 : 0);
             $this->model_setting_setting->editSetting( 'payment_'.$payment, $this->request->post );
