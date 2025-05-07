@@ -61,17 +61,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" for="input-show-issuers">{{ entry_show_issuers }}</label>
-                                <div class="col-sm-10">
-                                    <select name="payment_cardgateideal_show_issuers" id="input-show-issuers" class="form-select">
-                                        <option value="1"{% if payment_cardgatedideal_show_issuers %} selected="selected"{% endif %}>{{ text_enabled }}</option>
-                                        <option value="0"{% if not payment_cardgateideal_show_issuers %} selected="selected"{% endif %}>{{ text_disabled }}</option>
-                                    </select>
-                                    <p class="small">{{ entry_show_issuers_explain }}</p>
-
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label class="col-sm-2 control-label" for="entry-plugin-status">{{ entry_plugin_status }}</label>
                                 <div class="col-sm-10">
                                 	<select name="payment_cardgateideal_status" id="input-status" class="form-control">

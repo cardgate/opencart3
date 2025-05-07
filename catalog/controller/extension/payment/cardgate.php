@@ -17,7 +17,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class ControllerExtensionPaymentCardGate extends Controller {
-	var $version = '3.0.22';
+	var $version = '3.0.23';
 	
 	/**
 	 * Index action
@@ -28,17 +28,6 @@ class ControllerExtensionPaymentCardGate extends Controller {
 		$data ['button_confirm'] = $this->language->get ( 'button_confirm' );
 		$data ['redirect_message'] = $this->language->get ( 'text_redirect_message' );
 		$data ['text_select_payment_method'] = $this->language->get ( 'text_select_payment_method' );
-		$data ['text_ideal_bank_selection'] = $this->language->get ( 'text_ideal_bank_selection' );
-		$data ['text_ideal_bank_alert'] = $this->language->get ( 'text_ideal_bank_alert' );
-		$data ['text_ideal_bank_options'] = $this->getBankOptions ();
-
-        if ( $payment == 'cardgateideal' ) {
-            $data['entry_show_issuers'] = $this->language->get( 'entry_show_issuers' );
-            $data['entry_show_issuers_explain'] = $this->language->get( 'entry_show_issuers_explain' );
-            $data ['show_issuers'] = boolval( $this->config->get( 'payment_cardgateideal_show_issuers' ) );
-        }
-
-
 		return $this->load->view ( 'extension/payment/' . $payment, $data );
 	}
 	
@@ -74,12 +63,6 @@ class ControllerExtensionPaymentCardGate extends Controller {
 			
 			// Configure payment option.
 			$oTransaction->setPaymentMethod ( $oCardGate->methods ()->get ( $option ) );
-			if ('ideal' == $option) {
-                $iShowIssuers = $this->config->get ( 'payment_cardgateideal_show_issuers' );
-                if ($iShowIssuers == 1) {
-                    $oTransaction->setIssuer( $_GET ['issuer_id'] );
-                }
-			}
 			
 			// Configure customer.
 			$oConsumer = $oTransaction->getConsumer ();
@@ -338,77 +321,12 @@ class ControllerExtensionPaymentCardGate extends Controller {
 			echo htmlspecialchars ( $oException_->getMessage () );
 		}
 	}
-	
-	/**
-	 * Fetch bank option data from cardgate
-	 */
-	public function getBankOptions() {
-	    
-	    $this->checkBankOptions();
-	    $sIssuers = $this->cache->get('cardgateissuers');
-	    $aIssuers = unserialize($sIssuers);
-	    
-		$options = '';
-		foreach ( $aIssuers as $aIssuer ) {
-			$options .= '<option value="' . $aIssuer ['id'] . '">' . $aIssuer ['name'] . '</option>';
-		}
-		return $options;
-	}
 	public function returnJson($message) {
 		$json = array ();
 		$json ['success'] = false;
 		$json ['error'] = $message;
 		$this->response->addHeader ( 'Content-Type: application/json' );
 		$this->response->setOutput ( json_encode ( $json ) );
-	}
-	
-	/**
-	 * Check issuer refresh lifetime.
-	 */
-	private function checkBankOptions() {
-	    
-	    $iLifeTime = $this->cache->get('cardgateissuerrefresh');
-	    if (!$iLifeTime || ($iLifeTime < time())){
-	        $this->cacheBankOptions();
-	    }
-	}
-	
-	/**
-	 * Cache bank options
-	 */
-	private function cacheBankOptions() {
-
-		try {
-
-			include 'cardgate-clientlib-php/init.php';
-
-			$oCardGate = new cardgate\api\Client ( ( int ) $this->config->get( 'payment_cardgate_merchant_id' ), $this->config->get( 'payment_cardgate_api_key' ), ( $this->config->get( 'payment_cardgate_test_mode' ) == 'test' ? true : false ) );
-			$oCardGate->setIp( $_SERVER ['REMOTE_ADDR'] );
-
-			$aIssuers = $oCardGate->methods()->get( cardgate\api\Method::IDEAL )->getIssuers();
-		} catch ( cardgate\api\Exception $oException_ ) {
-			$aIssuers [0] = [
-				'id'   => 0,
-				'name' => htmlspecialchars( $oException_->getMessage() )
-			];
-		}
-
-		$aBanks = array();
-
-		if ( is_array( $aIssuers ) ) {
-			foreach ( $aIssuers as $key => $aIssuer ) {
-				$aBanks[ $aIssuer['id'] ] = $aIssuer['name'];
-			}
-		}
-
-	    if (array_key_exists("INGBNL2A", $aBanks)) {
-		    $iCacheTime = 24 * 60 * 60;
-		    $iLifeTime = time() + $iCacheTime;
-		    $this->cache->set('cardgateissuerrefresh', $iLifeTime);
-
-		    $sIssuers = serialize( $aIssuers);
-		    $this->cache->set( 'cardgateissuers', $sIssuers);
-	    }
 	}
 	private function convertAmount($amount, $currency_code){
 		return round($this->currency->format ( $amount, $currency_code, false, false ) * 100, 0 );
