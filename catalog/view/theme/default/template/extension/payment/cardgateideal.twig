@@ -1,24 +1,9 @@
 <div class="buttons">
     <form action="" method="POST" id="cardgate_checkout">
         <input type="hidden" name="option" value="ideal" />
-        {% if show_issuers %}
-            <fieldset class="payment">
-                <legend>{{ text_ideal_bank_selection }}</legend>
-                <label style="position: relative; padding-right: 10px;" class="method" >
-                    <img style="height:80px; max-width:100px" src="./image/payment/cgp/ideal.svg" alt="iDEAL" />
-                </label>
-                <label style="position: relative; width: 200px;" class="issuers" for="CGP_IDEAL_ISSUER">
-                    <select id="CGP_IDEAL_ISSUER" name="suboption">
-                        {{ text_ideal_bank_options }}
-                    </select>
-                </label>
-            </fieldset>
-        {% endif %}
-        {% if not show_issuers %}
             <label style="position: relative;" class="method" >
                 <img style="height:80px; max-width:100px" src="./image/payment/cgp/ideal.svg" alt="iDEAL" />
             </label>
-        {% endif %}
     </form>
 </div>
 <div class="buttons">
@@ -28,14 +13,6 @@
 </div>
 
 <script type="text/javascript"><!--
-
-    function checkBank() {
-        if ($('#CGP_IDEAL_ISSUER').val() == 0) {
-            alert('Kies eerst uw iDEAL bank a.u.b.');
-        } else {
-            redirectClient();
-        }
-    }
 
     function redirectClient(response) {
         var issuerId = $('#CGP_IDEAL_ISSUER').val();
