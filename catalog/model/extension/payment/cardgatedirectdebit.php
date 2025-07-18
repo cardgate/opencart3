@@ -16,9 +16,15 @@
  * @copyright   Copyright (c) 2012 CardGatePlus B.V. (http://www.cardgateplus.com)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
+require_once(DIR_SYSTEM . 'helper/cardgatehelper.php');
 class ModelExtensionPaymentCardGateDirectDebit extends Model {
 
     public function getMethod( $address, $total ) {
+
+        $currency = $this->config->get('config_currency');
+        if (!checkPaymentCurrency($currency, 'cardgatedirectdebit')) {
+            return [];
+        }
 
         $this->load->language( 'extension/payment/cardgatedirectdebit' );
 

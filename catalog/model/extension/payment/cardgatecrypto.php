@@ -16,23 +16,17 @@
  * @copyright   Copyright (c) 2012 CardGatePlus B.V. (http://www.cardgateplus.com)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-require_once(DIR_SYSTEM . 'helper/cardgatehelper.php');
-class ModelExtensionPaymentCardGatePrzelewy24 extends Model {
+class ModelExtensionPaymentCardGateCrypto extends Model {
 
     public function getMethod( $address, $total ) {
 
-        $currency = $this->config->get('config_currency');
-        if (!checkPaymentCurrency($currency, 'cardgateprzelewy24')) {
-            return [];
-        }
+        $this->load->language( 'extension/payment/cardgatecrypto' );
 
-        $this->load->language( 'extension/payment/cardgateprzelewy24' );
+        $query = $this->db->query( "SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE geo_zone_id = '" . ( int ) $this->config->get( 'payment_cardgatecrypto_geo_zone_id' ) . "' AND country_id = '" . ( int ) $address['country_id'] . "' AND (zone_id = '" . ( int ) $address['zone_id'] . "' OR zone_id = '0')" );
 
-        $query = $this->db->query( "SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE geo_zone_id = '" . ( int ) $this->config->get( 'payment_cardgateprzelewy24_geo_zone_id' ) . "' AND country_id = '" . ( int ) $address['country_id'] . "' AND (zone_id = '" . ( int ) $address['zone_id'] . "' OR zone_id = '0')" );
-
-        if ( $this->config->get('payment_cardgateprzelewy24_total') > 0 && $this->config->get('payment_cardgateprzelewy24_total') > $total) {
+        if ( $this->config->get('payment_cardgatecrypto_total') > 0 && $this->config->get('payment_cardgatecrypto_total') > $total) {
             $status = false;
-        } elseif ( !$this->config->get( 'payment_cardgateprzelewy24_geo_zone_id' ) ) {
+        } elseif ( !$this->config->get( 'payment_cardgatecrypto_geo_zone_id' ) ) {
             $status = true;
         } elseif ( $query->num_rows ) {
             $status = true;
@@ -40,14 +34,14 @@ class ModelExtensionPaymentCardGatePrzelewy24 extends Model {
             $status = false;
         }
 
-        if ($this->config->get('payment_cardgateprzelewy24_custom_payment_method_text')){
-            $payment_text = trim($this->config->get('payment_cardgateprzelewy24_custom_payment_method_text'));
+        if ($this->config->get('payment_cardgatecrypto_custom_payment_method_text')){
+            $payment_text = trim($this->config->get('payment_cardgatecrypto_custom_payment_method_text'));
         } else {
             $payment_text = trim($this->language->get( 'text_title' ));
         }
 
         if ($this->config->get('payment_cardgate_use_logo') == 1) {
-            $payment_logo = '<img style="max-height: 30px; max-width: 40px;" src="image/payment/cgp/przelewy24.svg">&nbsp&nbsp';
+            $payment_logo = '<img style="max-height: 30px; max-width: 40px;" src="image/payment/cgp/crypto.svg">&nbsp&nbsp';
             $title = '<div style="width:200px;">'.$payment_logo.$payment_text.'</div>';
         } else {
             $title = $payment_text;
@@ -57,13 +51,12 @@ class ModelExtensionPaymentCardGatePrzelewy24 extends Model {
         if ( $status ) {
             
             $method_data = array(
-                'code' => 'cardgateprzelewy24',
+                'code' => 'cardgatecrypto',
                 'title' => $title,
                 'terms' => '',
-                'sort_order' => $this->config->get( 'payment_cardgateprzelewy24_sort_order' )
+                'sort_order' => $this->config->get( 'payment_cardgatecrypto_sort_order' )
             );
         }
-
         return $method_data;
     }
 }
